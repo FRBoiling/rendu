@@ -1,0 +1,14 @@
+//
+// Created by boil on 18-10-3.
+//
+
+// the configured options and settings for Tutorial
+#define VERSION_MAJOR @VERSION_MAJOR@
+#define VERSION_MINOR @VERSION_MINOR@
+
+// 内存分配器
+#cmakedefine USE_JEMALLOC
+#cmakedefine USE_TCMALLOC
+
+//string
+#cmakedefine RENDU_STD_STRING
