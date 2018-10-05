@@ -5,12 +5,10 @@
 #ifndef RENDU_LOGMODEL_H
 #define RENDU_LOGMODEL_H
 
-#include <rendu/common/stringpiece.h>
+#include <rendu/common/StringPiece.h>
 
 namespace rendu {
     namespace log {
-
-        const char* strerror_tl(int savedErrno);
 
         // helper class for known string length at compile time
         class T {
@@ -25,7 +23,7 @@ namespace rendu {
             const unsigned len_;
         };
 
-
+        //
         class SourceFile {
         public:
             template<int N>
@@ -52,6 +50,7 @@ namespace rendu {
             int size_;
         };
 
+        //fmt
         class Fmt // : boost::noncopyable
         {
         public:
@@ -67,7 +66,37 @@ namespace rendu {
             int length_;
         };
 
+        template<typename T>
+        Fmt::Fmt(const char *fmt, T val) {
+            static_assert(std::is_arithmetic<T>::value == true);
 
+            length_ = snprintf(buf_, sizeof buf_, fmt, val);
+            assert(static_cast<size_t>(length_) < sizeof buf_);
+        }
+
+// Explicit instantiations
+
+        template Fmt::Fmt(const char *fmt, char val) ;
+
+        template Fmt::Fmt(const char *fmt, short val);
+
+        template Fmt::Fmt(const char *fmt, unsigned short val);
+
+        template Fmt::Fmt(const char *fmt, int val);
+
+        template Fmt::Fmt(const char *fmt, unsigned int val);
+
+        template Fmt::Fmt(const char *fmt, long val);
+
+        template Fmt::Fmt(const char *fmt, unsigned long val);
+
+        template Fmt::Fmt(const char *fmt, long long val);
+
+        template Fmt::Fmt(const char *fmt, unsigned long long val);
+
+        template Fmt::Fmt(const char *fmt, float val);
+
+        template Fmt::Fmt(const char *fmt, double val);
     }
 }
 

@@ -3,7 +3,7 @@
 //
 
 #include "Date.h"
-#include <rendu/common/stringpiece.h>
+#include <rendu/common/StringPiece.h>
 
 using namespace rendu;
 using namespace rendu::time;

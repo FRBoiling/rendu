@@ -2,11 +2,12 @@
 // Created by boil on 18-10-3.
 //
 
-#include <rendu/common/currentthread.h>
+#include <rendu/thread/CurrentThread.h>
 #include "LogImpl.h"
 #include <rendu/time/TimeZone.h>
 
 using namespace rendu::log;
+using namespace rendu::thread;
 
 __thread char t_errnobuf[512];
 
@@ -32,10 +33,12 @@ LogImpl::LogImpl(LogLevel level, int savedErrno, const SourceFile& file, int lin
     }
 }
 
-__thread char t_time[64];
-__thread time_t t_lastSecond;
+namespace rendu{
+    __thread char t_time[64];
+    __thread time_t t_lastSecond;
 
-TimeZone g_logTimeZone;
+    TimeZone g_logTimeZone;
+}
 
 void LogImpl::formatTime()
 {

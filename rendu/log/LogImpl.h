@@ -5,13 +5,11 @@
 #ifndef RENDU_LOG_LOGIMPL_H
 #define RENDU_LOG_LOGIMPL_H
 
-#include "loglevel.h"
+#include "LogLevel.h"
 #include "LogStream.h"
 #include <rendu/time/Timestamp.h>
 
 using namespace rendu::time;
-
-
 
 namespace rendu {
     namespace log {

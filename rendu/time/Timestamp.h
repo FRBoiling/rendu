@@ -6,7 +6,7 @@
 #define RENDU_TIME_TIMESTAMP_H
 
 #include <boost/operators.hpp>
-#include <rendu/common/stringpiece.h>
+#include <rendu/common/StringPiece.h>
 
 namespace rendu {
     namespace time {

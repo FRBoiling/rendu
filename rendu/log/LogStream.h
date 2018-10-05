@@ -2,17 +2,16 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_LOG_LOGSTEAM_H
-#define RENDU_LOG_LOGSTEAM_H
+#ifndef RENDU_LOG_LOGSTREAM_H
+#define RENDU_LOG_LOGSTREAM_H
 
 #include <boost/noncopyable.hpp>
-#include <rendu/common/stringpiece.h>
+#include <rendu/common/StringPiece.h>
 #include <rendu/common/FixedBuffer.h>
-#include "logmodel.h"
+#include "LogStreamObject.h"
 
 namespace rendu {
     namespace log {
-
 
         class LogStream : boost::noncopyable {
             typedef LogStream self;
@@ -87,7 +86,6 @@ namespace rendu {
             }
 
 
-
             void append(const char *data, int len) { buffer_.append(data, len); }
 
             const Buffer &buffer() const { return buffer_; }
@@ -105,14 +103,12 @@ namespace rendu {
             static const int kMaxNumericSize = 32;
         };
 
-        inline LogStream& operator<<(LogStream& s, T v)
-        {
+        inline LogStream &operator<<(LogStream &s, T v) {
             s.append(v.str_, v.len_);
             return s;
         }
 
-        inline LogStream& operator<<(LogStream& s, const SourceFile& sourceFile)
-        {
+        inline LogStream &operator<<(LogStream &s, const SourceFile &sourceFile) {
             s.append(sourceFile.data_, sourceFile.size_);
             return s;
         }
@@ -124,4 +120,4 @@ namespace rendu {
     }
 }
 
-#endif //RENDU_LOG_LOGSTEAM_H
+#endif //RENDU_LOG_LOGSTREAM_H

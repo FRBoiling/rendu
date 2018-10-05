@@ -18,7 +18,16 @@ namespace rendu{
             NUM_LOG_LEVELS,
         };
 
-        const char* LogLevelName[NUM_LOG_LEVELS] =
+//        const char* LogLevelName[NUM_LOG_LEVELS] =
+//                {
+//                        "TRACE ",
+//                        "DEBUG ",
+//                        "INFO  ",
+//                        "WARN  ",
+//                        "ERROR ",
+//                        "FATAL ",
+//                };
+        const char LogLevelName[NUM_LOG_LEVELS][8] =
                 {
                         "TRACE ",
                         "DEBUG ",

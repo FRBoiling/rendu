@@ -5,7 +5,7 @@
 #ifndef RENDU_FIXEDBUFFER_H
 #define RENDU_FIXEDBUFFER_H
 
-#include "stringpiece.h"
+#include "StringPiece.h"
 #include <boost/noncopyable.hpp>
 
 namespace rendu {
@@ -72,6 +72,11 @@ namespace rendu {
         char *cur_;
     };
 
+    template
+    class FixedBuffer<kSmallBuffer>;
+
+    template
+    class FixedBuffer<kLargeBuffer>;
 
 }
 
