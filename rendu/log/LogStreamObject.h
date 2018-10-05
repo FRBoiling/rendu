@@ -16,6 +16,7 @@ namespace rendu {
             T(const char *str, unsigned len)
                     : str_(str),
                       len_(len) {
+//                int nlen = strlen(str);
                 assert(strlen(str) == len_);
             }
 

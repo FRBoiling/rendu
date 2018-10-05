@@ -25,6 +25,8 @@ namespace rendu {
 
             LogStream &stream() { return log_impl_.stream_; }
 
+            static void init();
+
             static LogLevel logLevel();
 
             static void setLogLevel(LogLevel level);

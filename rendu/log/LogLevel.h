@@ -27,14 +27,14 @@ namespace rendu{
 //                        "ERROR ",
 //                        "FATAL ",
 //                };
-        const char LogLevelName[NUM_LOG_LEVELS][8] =
+        const char LogLevelName[NUM_LOG_LEVELS][6] =
                 {
-                        "TRACE ",
-                        "DEBUG ",
-                        "INFO  ",
-                        "WARN  ",
-                        "ERROR ",
-                        "FATAL ",
+                        "TRACE",
+                        "DEBUG",
+                        "INFO ",
+                        "WARN ",
+                        "ERROR",
+                        "FATAL",
                 };
     }
 }
