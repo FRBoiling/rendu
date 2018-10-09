@@ -8,6 +8,12 @@
 namespace rendu {
     namespace log {
 
+        __thread char t_errnobuf[512];
+
+        const char *strerror_tl(int savedErrno) {
+            return strerror_r(savedErrno, t_errnobuf, sizeof t_errnobuf);
+        }
+
         LogLevel initLogLevel();
 
         LogLevel g_logLevel = initLogLevel();
@@ -101,7 +107,7 @@ void Logger::setTimeZone(const TimeZone &tz) {
 
 void Logger::init() {
     //init time format default beijing time
-    time::TimeZone beijing(8*3600, "CST");
+    time::TimeZone beijing(8 * 3600, "CST");
     Logger::setTimeZone(beijing);
     //TODO:other init
 }

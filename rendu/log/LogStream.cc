@@ -2,7 +2,7 @@
 // Created by boil on 18-10-3.
 //
 
-#include <rendu/common/StringUtil.h>
+#include <rendu/util/StringUtil.h>
 #include "LogStream.h"
 
 using namespace rendu::log;

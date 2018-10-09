@@ -5,15 +5,10 @@
 #include <rendu/thread/CurrentThread.h>
 #include "LogImpl.h"
 #include <rendu/time/TimeZone.h>
+#include "Logger.h"
 
 using namespace rendu::log;
 using namespace rendu::thread;
-
-__thread char t_errnobuf[512];
-
-const char *strerror_tl(int savedErrno) {
-    return strerror_r(savedErrno, t_errnobuf, sizeof t_errnobuf);
-}
 
 LogImpl::LogImpl(LogLevel level, int savedErrno, const SourceFile &file, int line)
         : time_(Timestamp::now()),

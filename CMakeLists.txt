@@ -63,6 +63,7 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_subdirectory(rendu/zmalloc)
 add_subdirectory(rendu/common)
+add_subdirectory(rendu/util)
 add_subdirectory(rendu/time)
 add_subdirectory(rendu/log)
 add_subdirectory(rendu/thread)

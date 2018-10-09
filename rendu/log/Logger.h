@@ -10,6 +10,8 @@
 
 namespace rendu {
     namespace log {
+        const char *strerror_tl(int savedErrno);
+        class LogImpl;
 
         class Logger {
         public:
@@ -44,7 +46,6 @@ namespace rendu {
         private:
             LogImpl log_impl_;
         };
-
 
         //
 // CAUTION: do not write:
