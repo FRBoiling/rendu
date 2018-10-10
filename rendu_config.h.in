@@ -16,3 +16,6 @@
 //log
 #cmakedefine RENDU_LOG_TRACE
 #cmakedefine RENDU_LOG_DEBUG
+
+//thread
+#cmakedefine CHECK_PTHREAD_RETURN_VALUE

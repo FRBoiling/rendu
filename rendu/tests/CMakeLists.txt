@@ -18,4 +18,16 @@ target_link_libraries(timestamp_test rendu_time)
 add_executable(timezone_test time/timezone_test.cc)
 target_link_libraries(timezone_test rendu_time)
 
+#thread unittest
+add_executable(thread_test thread/thread_test.cc)
+target_link_libraries(thread_test rendu_time)
+target_link_libraries(thread_test rendu_thread)
+
+add_executable(thread_bench thread/thread_bench.cc)
+target_link_libraries(thread_bench rendu_time)
+target_link_libraries(thread_bench rendu_thread)
+
+add_executable(mutex_test thread/mutex_test.cc)
+target_link_libraries(mutex_test rendu_time)
+target_link_libraries(mutex_test rendu_thread)
 
