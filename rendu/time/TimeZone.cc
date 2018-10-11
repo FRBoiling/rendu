@@ -8,8 +8,8 @@
 #include "rendu/common/types.h"
 #include "Date.h"
 #include <string.h>
-#include <boost/noncopyable.hpp>
 #include <stdexcept>
+#include <rendu/common/noncopyable.h>
 
 using namespace rendu::time;
 
@@ -139,7 +139,7 @@ time_t TimeZone::fromUtcTime(int year, int month, int day,
 
 namespace rendu::time {
 
-    class File : boost::noncopyable
+    class File : rendu::noncopyable
     {
     public:
         File(const char* file)

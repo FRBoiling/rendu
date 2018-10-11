@@ -6,7 +6,7 @@
 #define RENDU_THREAD_H
 
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include <functional>
 #include <rendu/common/types.h>
 #include <atomic>
@@ -18,9 +18,11 @@
 
 
 namespace rendu {
+
     namespace thread {
 
-        class Thread : boost::noncopyable {
+
+        class Thread : rendu::noncopyable {
         public:
             typedef std::function<void()> ThreadFunc;
 

@@ -13,7 +13,7 @@
 namespace rendu {
     namespace log {
 
-        class AsyncLogger : boost::noncopyable {
+        class AsyncLogger : rendu::noncopyable {
         public:
 
             AsyncLogger(const string &basename,

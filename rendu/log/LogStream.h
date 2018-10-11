@@ -5,7 +5,7 @@
 #ifndef RENDU_LOG_LOGSTREAM_H
 #define RENDU_LOG_LOGSTREAM_H
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include <rendu/common/StringPiece.h>
 #include <rendu/common/FixedBuffer.h>
 #include "LogStreamObject.h"
@@ -13,7 +13,7 @@
 namespace rendu {
     namespace log {
 
-        class LogStream : boost::noncopyable {
+        class LogStream : rendu::noncopyable {
             typedef LogStream self;
         public:
             typedef FixedBuffer<kSmallBuffer> Buffer;

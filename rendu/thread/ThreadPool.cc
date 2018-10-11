@@ -3,7 +3,6 @@
 //
 
 #include "ThreadPool.h"
-#include <boost/bind.hpp>
 
 using namespace rendu::thread;
 
@@ -35,7 +34,7 @@ void ThreadPool::start(int numThreads)
         char id[32];
         snprintf(id, sizeof id, "%d", i+1);
         threads_.push_back(new Thread(
-                boost::bind(&ThreadPool::runInThread, this), name_+id));
+                std::bind(&ThreadPool::runInThread, this), name_+id));
         threads_[i].start();
     }
     if (numThreads == 0 && threadInitCallback_)
@@ -53,8 +52,10 @@ void ThreadPool::stop()
     }
     for_each(threads_.begin(),
              threads_.end(),
-             boost::bind(&Thread::join, _1));
+//             std::bind(&Thread::join,std::placeholders::_1));
+           std::bind(&Thread::join,std::placeholders::_1));
 }
+
 
 size_t ThreadPool::queueSize() const
 {

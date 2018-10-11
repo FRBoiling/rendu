@@ -6,13 +6,14 @@
 #define RENDU_READSMALLFILE_H
 
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include <rendu/common/StringPiece.h>
+
 namespace rendu{
     namespace util{
 
 // read small file < 64KB
-        class ReadSmallFile : boost::noncopyable {
+        class ReadSmallFile : rendu::noncopyable {
         public:
             ReadSmallFile(StringArg filename);
 

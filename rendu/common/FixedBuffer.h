@@ -6,7 +6,7 @@
 #define RENDU_FIXEDBUFFER_H
 
 #include "StringPiece.h"
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 
 namespace rendu {
 
@@ -14,7 +14,7 @@ namespace rendu {
     const int kLargeBuffer = 4000 * 1000;
 
     template<int SIZE>
-    class FixedBuffer : boost::noncopyable {
+    class FixedBuffer : rendu::noncopyable {
     public:
         FixedBuffer()
                 : cur_(data_) {

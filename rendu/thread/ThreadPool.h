@@ -6,7 +6,7 @@
 #define RENDU_THREADPOOL_H
 
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include <rendu/common/types.h>
 #include "Condition.h"
 #include "Thread.h"
@@ -16,7 +16,7 @@
 namespace rendu {
     namespace thread {
 
-        class ThreadPool : boost::noncopyable {
+        class ThreadPool : rendu::noncopyable {
         public:
             typedef std::function<void()> Task;
 

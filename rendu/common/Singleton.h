@@ -2,10 +2,10 @@
 // Created by boil on 18-10-7.
 //
 
-#ifndef RENDU_ABSTRACTSINGLETON_H
-#define RENDU_ABSTRACTSINGLETON_H
+#ifndef RENDU_SINGLETON_H
+#define RENDU_SINGLETON_H
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include <pthread.h>
 
 namespace rendu {
@@ -30,7 +30,7 @@ namespace rendu {
     };
 
     template<typename T>
-    class Singleton : boost::noncopyable {
+    class Singleton : rendu::noncopyable {
     public:
         static T &instance() {
             pthread_once(&ponce_, &Singleton::init);
@@ -68,8 +68,8 @@ namespace rendu {
     pthread_once_t Singleton<T>::ponce_ = PTHREAD_ONCE_INIT;
 
     template<typename T>
-    T* Singleton<T>::value_ = NULL;
+    T *Singleton<T>::value_ = NULL;
 
 }
 
-#endif //RENDU_ABSTRACTSINGLETON_H
+#endif //RENDU_SINGLETON_H

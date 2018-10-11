@@ -5,13 +5,13 @@
 #ifndef RENDU_CONDITION_H
 #define RENDU_CONDITION_H
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include "Mutex.h"
 
 namespace rendu {
     namespace thread {
 
-        class Condition : boost::noncopyable {
+        class Condition : rendu::noncopyable {
         public:
             explicit Condition(MutexLock &mutex)
                     : mutex_(mutex) {

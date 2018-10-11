@@ -6,14 +6,14 @@
 #define RENDU_COUNTDOWNLATCH_H
 
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include "Mutex.h"
 #include "Condition.h"
 
 namespace rendu {
     namespace thread {
 
-        class CountDownLatch : boost::noncopyable {
+        class CountDownLatch : rendu::noncopyable {
         public:
 
             explicit CountDownLatch(int count);

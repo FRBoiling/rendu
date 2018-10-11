@@ -5,7 +5,7 @@
 #ifndef RENDU_APPENDFILE_H
 #define RENDU_APPENDFILE_H
 
-#include <boost/noncopyable.hpp>
+#include <rendu/common/noncopyable.h>
 #include <sys/types.h>  // for off_t
 #include "rendu/common/StringPiece.h"
 
@@ -13,7 +13,7 @@ namespace rendu {
     namespace util {
 
         // not thread safe
-        class AppendFile : boost::noncopyable {
+        class AppendFile : rendu::noncopyable {
         public:
             explicit AppendFile(StringArg filename);
 

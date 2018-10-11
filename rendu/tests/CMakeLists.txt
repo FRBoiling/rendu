@@ -31,3 +31,12 @@ add_executable(mutex_test thread/mutex_test.cc)
 target_link_libraries(mutex_test rendu_time)
 target_link_libraries(mutex_test rendu_thread)
 
+add_executable(threadpool_test thread/threadpool_test.cc)
+target_link_libraries(threadpool_test rendu_time)
+target_link_libraries(threadpool_test rendu_thread)
+
+add_executable(threadlocal_test thread/threadlocal_test.cc)
+target_link_libraries(threadlocal_test rendu_time)
+target_link_libraries(threadlocal_test rendu_thread)
+
+

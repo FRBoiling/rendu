@@ -5,7 +5,9 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include "ReadSmallFIle.h"
+#include <unistd.h>
 
+using namespace rendu;
 using namespace rendu::util;
 
 ReadSmallFile::ReadSmallFile(StringArg filename)

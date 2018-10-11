@@ -52,7 +52,7 @@ namespace rendu {
         };
 
         //fmt
-        class Fmt // : boost::noncopyable
+        class Fmt // : rendu::noncopyable
         {
         public:
             template<typename T>

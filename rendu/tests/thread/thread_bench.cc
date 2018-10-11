@@ -78,7 +78,7 @@ int main(int argc, char *argv[]) {
 //             it != g_delays.end(); ++it) {
 //            printf("1 delay = %d, count = %d\n", it->first, it->second);
 //        }
-//        Timestamp end1(Timestamp::now());
+//        Timestamp end1(Timestamp::now()); 
 //        ddd1 = timeDifference(end1, start1);
 //        printf("1 %f\n", ddd1);
 //    }
