@@ -33,7 +33,7 @@ namespace rendu {
 
             static void setLogLevel(LogLevel level);
 
-            typedef void (*OutputFunc)(const char *msg, int len);
+            typedef void (*OutputFunc)(const char *msg, size_t len);
 
             typedef void (*FlushFunc)();
 

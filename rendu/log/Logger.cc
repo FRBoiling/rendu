@@ -40,7 +40,7 @@ namespace rendu {
         }
 
         //
-        void defaultOutput(const char *msg, int len) {
+        void defaultOutput(const char *msg, size_t len) {
             size_t n = fwrite(msg, 1, len, stdout);
             //FIXME check n
             (void) n;
@@ -67,7 +67,7 @@ Logger::Logger(SourceFile file, int line)
 
 Logger::Logger(SourceFile file, int line, LogLevel level, const char *func)
         : log_impl_(level, 0, file, line) {
-    log_impl_.stream_ << func << ' ';
+    log_impl_.stream_ << func << ": ";
 }
 
 Logger::Logger(SourceFile file, int line, LogLevel level)

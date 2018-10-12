@@ -71,7 +71,7 @@ int main()
         start = Timestamp::now();
         for (int i = 0; i < nthreads; ++i)
         {
-            threads.push_back(new Thread(&threadFunc));
+            threads.push_back(new Thread(threadFunc));
             threads.back().start();
         }
         for (int i = 0; i < nthreads; ++i)

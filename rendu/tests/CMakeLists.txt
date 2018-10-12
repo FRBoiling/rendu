@@ -1,3 +1,7 @@
+#common unittest
+add_executable(move_test common/move_test.cc)
+target_link_libraries(move_test rendu_log)
+
 #log unittest
 add_executable(log_test log/log_test.cc)
 target_link_libraries(log_test rendu_log)

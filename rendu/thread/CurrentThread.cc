@@ -9,13 +9,17 @@
 
 using namespace rendu::thread;
 
-namespace rendu::thread::CurrentThread {
-    __thread int t_cachedTid = 0;
-    __thread char t_tidString[32];
-    __thread int t_tidStringLength = 6;
-    __thread const char *t_threadName = "unknown";
-    const bool sameType = std::is_same<int, pid_t>::value;
-    static_assert(sameType);
+namespace rendu{
+    namespace thread{
+        namespace CurrentThread {
+            __thread int t_cachedTid = 0;
+            __thread char t_tidString[32];
+            __thread int t_tidStringLength = 6;
+            __thread const char *t_threadName = "unknown";
+            const bool sameType = std::is_same<int, pid_t>::value;
+            static_assert(sameType,"int and pid_t is not sameType");
+        }
+    }
 }
 
 pid_t getTid()
@@ -42,5 +46,5 @@ void CurrentThread::sleepUsec(int64_t usec)
     struct timespec ts = { 0, 0 };
     ts.tv_sec = static_cast<time_t>(usec /time::Timestamp::kMicroSecondsPerSecond);
     ts.tv_nsec = static_cast<long>(usec % time::Timestamp::kMicroSecondsPerSecond * 1000);
-    ::nanosleep(&ts, NULL);
+    ::nanosleep(&ts, nullptr);
 }

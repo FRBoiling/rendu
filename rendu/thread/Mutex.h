@@ -19,14 +19,16 @@ namespace rendu {
 //   int size() const;
 //
 //  private:
-//   mutable Mutex mutex_;
-//   std::vector<int> data_; // GUARDED BY mutex_
+//   mutable Mutex mutexLock_;
+//   std::vector<int> data_; // GUARDED BY mutexLock_
 // };
         class MutexLock : rendu::noncopyable {
         public:
-            MutexLock()
-                    : holder_(0) {
-                MCHECK(pthread_mutex_init(&mutex_, NULL));
+            MutexLock() :
+                    holder_(0) {
+//                    holder_(0),
+//                    mutex_(PTHREAD_MUTEX_INITIALIZER) {
+                MCHECK(pthread_mutex_init(&mutex_, nullptr));
             }
 
             ~MutexLock() {
@@ -65,7 +67,7 @@ namespace rendu {
 
             class UnassignGuard : rendu::noncopyable {
             public:
-                UnassignGuard(MutexLock &owner)
+                explicit UnassignGuard(MutexLock &owner)
                         : owner_(owner) {
                     owner_.unassignHolder();
                 }
@@ -94,30 +96,29 @@ namespace rendu {
 // Use as a stack variable, eg.
 // int Foo::size() const
 // {
-//   MutexLockGuard lock(mutex_);
+//   MutexLockGuard lock(mutexLock_);
 //   return data_.size();
 // }
         class MutexLockGuard : rendu::noncopyable {
         public:
-            explicit MutexLockGuard(MutexLock &mutex)
-                    : mutex_(mutex) {
-                mutex_.lock();
+            explicit MutexLockGuard(MutexLock &mutexLock)
+                    : mutexLock_(mutexLock) {
+                mutexLock_.lock();
             }
 
             ~MutexLockGuard() {
-                mutex_.unlock();
+                mutexLock_.unlock();
             }
 
         private:
 
-            MutexLock &mutex_;
+            MutexLock &mutexLock_;
         };
 
 // Prevent misuse like:
-// MutexLockGuard(mutex_);
+// MutexLockGuard(mutexLock_);
 // A tempory object doesn't hold the lock for long!
 #define MutexLockGuard(x) error "Missing guard object name"
-
     }
 }
 
