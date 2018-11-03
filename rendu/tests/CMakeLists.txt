@@ -2,6 +2,12 @@
 add_executable(move_test common/move_test.cc)
 target_link_libraries(move_test rendu_log)
 
+add_executable(normal_test common/normal_test.cc)
+target_link_libraries(normal_test rendu_log)
+
+add_executable(mystring_test common/mystring_test.cc)
+target_link_libraries(mystring_test rendu_log)
+
 #log unittest
 add_executable(log_test log/log_test.cc)
 target_link_libraries(log_test rendu_log)
@@ -21,6 +27,10 @@ target_link_libraries(timestamp_test rendu_time)
 
 add_executable(timezone_test time/timezone_test.cc)
 target_link_libraries(timezone_test rendu_time)
+
+add_executable(date_test time/date_test.cc)
+target_link_libraries(date_test rendu_time)
+target_link_libraries(date_test rendu_log)
 
 #thread unittest
 add_executable(thread_test thread/thread_test.cc)
@@ -42,5 +52,9 @@ target_link_libraries(threadpool_test rendu_thread)
 add_executable(threadlocal_test thread/threadlocal_test.cc)
 target_link_libraries(threadlocal_test rendu_time)
 target_link_libraries(threadlocal_test rendu_thread)
+
+add_executable(fork_test thread/fork_test.cc)
+target_link_libraries(fork_test rendu_time)
+target_link_libraries(fork_test rendu_thread)
 
 

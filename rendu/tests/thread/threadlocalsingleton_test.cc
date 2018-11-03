@@ -42,7 +42,7 @@ void threadFunc(const char* changeTo)
            ThreadLocalSingleton<Test>::instance().name().c_str());
 
     // no need to manually delete it
-    // muduo::ThreadLocalSingleton<Test>::destroy();
+    // muduo::ThreadLocalSingleton<test>::destroy();
 }
 
 int main()

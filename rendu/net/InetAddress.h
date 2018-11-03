@@ -6,7 +6,9 @@
 #define RENDU_NET_INETADDRESS_H
 
 
-class InetAddress {
+#include <rendu/common/copyable.h>
+
+class InetAddress : public rendu::copyable {
 
 };
 

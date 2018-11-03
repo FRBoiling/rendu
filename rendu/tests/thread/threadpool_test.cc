@@ -21,7 +21,7 @@ void printString(const std::string& str)
 
 void test(int maxSize)
 {
-    LOG_WARN << "Test ThreadPool with max queue size = " << maxSize;
+    LOG_WARN << "test ThreadPool with max queue size = " << maxSize;
     ThreadPool pool("MainThreadPool");
     pool.setMaxQueueSize(maxSize);
     pool.start(5);
