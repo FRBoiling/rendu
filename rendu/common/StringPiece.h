@@ -43,7 +43,7 @@
 #include <iosfwd>    // for ostream forward-declaration
 #include <string.h>
 
-#include "types.h"
+#include "Types.h"
 
 namespace rendu {
 

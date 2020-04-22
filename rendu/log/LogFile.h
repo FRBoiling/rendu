@@ -9,7 +9,7 @@
 #include <memory>
 #include <rendu/thread/Mutex.h>
 #include <rendu/util/AppendFile.h>
-#include <rendu/common/types.h>
+#include <rendu/common/Types.h>
 
 namespace rendu{
     namespace log{

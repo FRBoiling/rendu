@@ -5,7 +5,7 @@
 #include "TimeZone.h"
 #include <vector>
 #include <algorithm>
-#include "rendu/common/types.h"
+#include "rendu/common/Types.h"
 #include "Date.h"
 #include <string.h>
 #include <stdexcept>

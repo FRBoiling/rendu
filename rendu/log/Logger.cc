@@ -109,5 +109,6 @@ void Logger::init() {
     //init time format default beijing time
     time::TimeZone beijing(8 * 3600, "CST");
     Logger::setTimeZone(beijing);
+    Logger::setLogLevel(DEBUG);
     //TODO:other init
 }

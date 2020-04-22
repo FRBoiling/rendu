@@ -3,7 +3,7 @@
 //
 
 #include "CurrentThread.h"
-#include <rendu/common/types.h>
+#include <rendu/common/Types.h>
 #include <rendu/time/Timestamp.h>
 #include <sys/syscall.h>
 

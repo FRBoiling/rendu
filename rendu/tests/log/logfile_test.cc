@@ -4,7 +4,7 @@
 #include <memory>
 #include <rendu/log/LogFile.h>
 #include <rendu/log/Logger.h>
-#include <rendu/common/types.h>
+#include <rendu/common/Types.h>
 
 using namespace rendu;
 using namespace rendu::log;

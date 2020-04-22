@@ -7,7 +7,7 @@
 
 
 #include <rendu/common/noncopyable.h>
-#include <rendu/common/types.h>
+#include <rendu/common/Types.h>
 #include "Condition.h"
 #include "Thread.h"
 #include <deque>

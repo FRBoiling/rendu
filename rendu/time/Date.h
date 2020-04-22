@@ -5,7 +5,7 @@
 #ifndef RENDU_DATE_H
 #define RENDU_DATE_H
 
-#include <rendu/common/types.h>
+#include <rendu/common/Types.h>
 
 namespace rendu {
     namespace time {

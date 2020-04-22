@@ -7,7 +7,7 @@
 
 #include <rendu/common/noncopyable.h>
 #include <functional>
-#include <rendu/common/types.h>
+#include <rendu/common/Types.h>
 #include <atomic>
 #include "CountDownLatch.h"
 #include "CurrentThread.h"
