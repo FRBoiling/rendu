@@ -1,28 +1,37 @@
 //
 // Created by boil on 20-4-17.
 //
-
 #ifndef RENDU_EVENTLOOP_H
 #define RENDU_EVENTLOOP_H
-
-
-#include "rendu/common/copyable.h"
-#include "rendu/time/Timestamp.h"
-
-#include <boost/core/noncopyable.hpp>
-#include <boost/function.hpp>
-#include <rendu/time/TimerId.h>
-#include "Callbacks.h"
 
 ///
 /// Reactor, at most one per thread.
 ///
 /// This is an interface class, so don't expose too much details.
-namespace rendu {
-    using namespace time;
-    namespace net {
 
-        class EventLoop : boost::noncopyable {
+#include <vector>
+
+#include <boost/function.hpp>
+#include <boost/any.hpp>
+#include <boost/scoped_ptr.hpp>
+
+#include <rendu/common/noncopyable.h>
+#include <rendu/time/Timestamp.h>
+#include <rendu/common/CurrentThread.h>
+#include <rendu/common/MutexLock.h>
+
+#include "TimerId.h"
+
+namespace rendu
+{
+    using namespace time;
+    namespace net
+    {
+        class Channel;
+        class Poller;
+        class TimerQueue;
+
+        class EventLoop : rendu::noncopyable {
         public:
             typedef boost::function<void()> Functor;
 

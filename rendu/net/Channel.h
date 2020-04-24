@@ -6,8 +6,8 @@
 #define RENDU_CHANNEL_H
 
 #include <rendu/common/noncopyable.h>
-#include "EventLoop.h"
 #include <boost/weak_ptr.hpp>
+#include "EventLoop.h"
 
 namespace rendu {
     namespace net {
@@ -126,7 +126,7 @@ namespace rendu {
             EventCallback closeCallback_;
             EventCallback errorCallback_;
         };
-    };
+    }
 }
 
 

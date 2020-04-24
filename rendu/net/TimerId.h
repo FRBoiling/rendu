@@ -7,12 +7,11 @@
 
 #include <rendu/common/copyable.h>
 #include <rendu/common/Types.h>
+#include "Timer.h"
 
 namespace rendu
 {
-    namespace time{
-
-        class Timer;
+    namespace net{
 ///
 /// An opaque identifier, for canceling Timer.
 ///
