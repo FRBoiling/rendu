@@ -1,15 +1,4 @@
-add_executable(abstracyfactory designpattern/abstractfactory.cc)
-add_executable(builder designpattern/builder.cc)
-add_executable(prototype designpattern/prototype.cc)
-
-
-
-
-
-
-
-add_executable(pingpong pingpong/server.cc)
-
+add_subdirectory(pingpong)
 
 #
 #add_subdirectory(ace/ttcp)

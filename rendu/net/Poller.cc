@@ -3,7 +3,9 @@
 //
 
 #include "Poller.h"
+#include "Channel.h"
 
+using namespace rendu;
 using namespace rendu::net;
 
 Poller::Poller(EventLoop* loop)

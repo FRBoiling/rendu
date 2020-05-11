@@ -11,6 +11,7 @@
 namespace rendu {
     namespace log {
         const char *strerror_tl(int savedErrno);
+
         class LogImpl;
 
         class Logger {
@@ -75,6 +76,26 @@ namespace rendu {
 #define LOG_FATAL Logger(__FILE__, __LINE__,FATAL).stream()
 #define LOG_SYSERR Logger(__FILE__, __LINE__, false).stream()
 #define LOG_SYSFATAL Logger(__FILE__, __LINE__, true).stream()
+
+        const char *strerror_tl(int savedErrno);
+
+// Taken from glog/logging.h
+//
+// Check that the input is non NULL.  This very useful in constructor
+// initializer lists.
+
+#define CHECK_NOTNULL(val) \
+    CheckNotNull(__FILE__, __LINE__, "'" #val "' Must be non NULL", (val))
+
+
+// A small helper for CHECK_NOTNULL().
+        template<typename T>
+        T *CheckNotNull(SourceFile file, int line, const char *names, T *ptr) {
+            if (ptr == NULL) {
+                Logger(file, line, FATAL).stream() << names;
+            }
+            return ptr;
+        }
     }
 }
 

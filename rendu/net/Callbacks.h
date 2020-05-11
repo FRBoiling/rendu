@@ -7,10 +7,12 @@
 
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
-#include <rendu/common/Types.h>
 #include <rendu/time/Timestamp.h>
 
+using namespace rendu::time;
+
 namespace rendu {
+
 // Adapted from google-protobuf stubs/common.h
 // see License in muduo/base/Types.h
     template<typename To, typename From>
@@ -25,7 +27,6 @@ namespace rendu {
         return ::boost::static_pointer_cast<To>(f);
     }
 
-    using namespace time;
     namespace net {
         // All client visible callbacks go here.
         class Buffer;

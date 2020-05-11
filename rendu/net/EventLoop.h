@@ -17,18 +17,17 @@
 
 #include <rendu/common/noncopyable.h>
 #include <rendu/time/Timestamp.h>
-#include <rendu/common/CurrentThread.h>
-#include <rendu/common/MutexLock.h>
+#include <rendu/thread/CurrentThread.h>
+#include <rendu/thread/Mutex.h>
 
 #include "TimerId.h"
 
-namespace rendu
-{
-    using namespace time;
-    namespace net
-    {
+namespace rendu {
+    namespace net {
         class Channel;
+
         class Poller;
+
         class TimerQueue;
 
         class EventLoop : rendu::noncopyable {
@@ -132,7 +131,7 @@ namespace rendu
                 }
             }
 
-            bool isInLoopThread() const { return threadId_ == CurrentThread::tid(); }
+            bool isInLoopThread() const { return threadId_ == thread::CurrentThread::tid(); }
 
             // bool callingPendingFunctors() const { return callingPendingFunctors_; }
             bool eventHandling() const { return eventHandling_; }
@@ -174,7 +173,7 @@ namespace rendu
             ChannelList activeChannels_;
             Channel *currentActiveChannel_;
 
-            mutable MutexLock mutex_;
+            mutable thread::MutexLock mutex_;
             std::vector<Functor> pendingFunctors_; // @GuardedBy mutex_
         };
     }

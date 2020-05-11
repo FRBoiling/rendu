@@ -1,0 +1,13 @@
+add_executable(pingpong_client client.cc)
+target_link_libraries(pingpong_client rendu_net)
+##target_link_libraries(pingpong_client rendu_common)
+##target_link_libraries(pingpong_client rendu_time)
+##target_link_libraries(pingpong_client rendu_log)
+##target_link_libraries(pingpong_client rendu_thread)
+#
+add_executable(pingpong_server server.cc)
+target_link_libraries(pingpong_server rendu_net)
+#target_link_libraries(pingpong_server rendu_common)
+#target_link_libraries(pingpong_server rendu_time)
+#target_link_libraries(pingpong_server rendu_log)
+#target_link_libraries(pingpong_server rendu_thread)

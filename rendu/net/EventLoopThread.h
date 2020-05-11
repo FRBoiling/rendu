@@ -8,10 +8,11 @@
 #include "EventLoop.h"
 
 #include <rendu/common/noncopyable.h>
-#include <rendu/common/Thread.h>
-#include <rendu/common/Condition.h>
+#include <rendu/thread/Thread.h>
+#include <rendu/thread/Condition.h>
 
 namespace rendu{
+    using namespace thread;
     namespace net{
         class EventLoopThread : rendu::noncopyable
         {

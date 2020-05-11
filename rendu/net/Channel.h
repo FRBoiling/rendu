@@ -6,11 +6,16 @@
 #define RENDU_CHANNEL_H
 
 #include <rendu/common/noncopyable.h>
+#include <rendu/time/Timestamp.h>
+
 #include <boost/weak_ptr.hpp>
-#include "EventLoop.h"
+#include <boost/function.hpp>
 
 namespace rendu {
+    using namespace time;
     namespace net {
+        class EventLoop;
+
         class Channel : rendu::noncopyable {
         public:
             typedef boost::function<void()> EventCallback;

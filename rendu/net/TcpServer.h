@@ -5,18 +5,21 @@
 #ifndef RENDU_TCPSERVER_H
 #define RENDU_TCPSERVER_H
 
-#include <rendu/common/noncopyable.h>
-#include "EventLoop.h"
-#include "EventLoopThreadPool.h"
+#include <rendu/common/Atomic.h>
+#include <rendu/common/Types.h>
+#include "TcpConnection.h"
 
-#include "InetAddress.h"
-#include "Acceptor.h"
-#include <stdio.h>
 #include <map>
+#include <boost/noncopyable.hpp>
+#include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 namespace rendu{
     namespace net{
-        ///
+        class Acceptor;
+        class EventLoop;
+        class EventLoopThreadPool;
+
 /// TCP server, supports single-threaded and thread-pool models.
 ///
 /// This is an interface class, so don't expose too much details.

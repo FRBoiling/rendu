@@ -2,47 +2,54 @@
 // Created by boil on 20-4-17.
 //
 
-#include <rendu/log/Logger.h>
-
-#include <signal.h>
-#include <sys/eventfd.h>
-
-#include <boost/bind.hpp>
-
 #include "EventLoop.h"
+#include "Channel.h"
 #include "Poller.h"
 #include "TimerQueue.h"
 #include "SocketsOps.h"
 
+#include <rendu/log/Logger.h>
+#include <rendu/thread/Mutex.h>
+
+#include <boost/bind.hpp>
+
+#include <signal.h>
+#include <sys/eventfd.h>
+
+using namespace rendu;
 using namespace rendu::net;
+using namespace rendu::thread;
 using namespace rendu::log;
 
-__thread EventLoop *t_loopInThisThread = 0;
+namespace {
 
-const int kPollTimeMs = 10000;
+    __thread EventLoop *t_loopInThisThread = 0;
 
-int createEventfd() {
-    int evtfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
-    if (evtfd < 0) {
-        LOG_SYSERR << "Failed in eventfd";
-        abort();
+    const int kPollTimeMs = 10000;
+
+    int createEventfd() {
+        int evtfd = ::eventfd(0, EFD_NONBLOCK | EFD_CLOEXEC);
+        if (evtfd < 0) {
+            LOG_SYSERR << "Failed in eventfd";
+            abort();
+        }
+        return evtfd;
     }
-    return evtfd;
-}
 
 #pragma GCC diagnostic ignored "-Wold-style-cast"
 
-class IgnoreSigPipe {
-public:
-    IgnoreSigPipe() {
-        ::signal(SIGPIPE, SIG_IGN);
-        // LOG_TRACE << "Ignore SIGPIPE";
-    }
-};
+    class IgnoreSigPipe {
+    public:
+        IgnoreSigPipe() {
+            ::signal(SIGPIPE, SIG_IGN);
+            // LOG_TRACE << "Ignore SIGPIPE";
+        }
+    };
 
 #pragma GCC diagnostic error "-Wold-style-cast"
 
-IgnoreSigPipe initObj;
+    IgnoreSigPipe initObj;
+};
 
 EventLoop *EventLoop::getEventLoopOfCurrentThread() {
     return t_loopInThisThread;

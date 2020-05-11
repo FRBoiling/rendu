@@ -3,8 +3,10 @@
 //
 
 #include "Channel.h"
-#include <bits/poll.h>
+#include <sys/poll.h>
 #include <rendu/log/Logger.h>
+#include <rendu/net/EventLoop.h>
+
 #include <sstream>
 
 using namespace rendu;
