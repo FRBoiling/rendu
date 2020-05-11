@@ -5,7 +5,7 @@
 #ifndef RENDU_LOGFILE_H
 #define RENDU_LOGFILE_H
 
-#include <rendu/common/noncopyable.h>
+#include rendu/common/noncopyable.h>
 #include <memory>
 #include <rendu/thread/Mutex.h>
 #include <rendu/util/AppendFile.h>
@@ -13,7 +13,7 @@
 
 namespace rendu{
     namespace log{
-        class LogFile : rendu::noncopyable
+        class LogFile : noncopyable
         {
         public:
             LogFile(const string& basename,

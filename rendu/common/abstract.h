@@ -2,15 +2,15 @@
 // Created by boil on 18-8-23.
 //
 
-#ifndef BOIL_ABSTRACT_H
-#define BOIL_ABSTRACT_H
+#ifndef RENDU_COMMON_ABSTRACT_H
+#define RENDU_COMMON_ABSTRACT_H
 
-namespace rendu {
+namespace rendu
+{
 
 #define abstract class
 #define extends public
 
-}
+} // namespace rendu
 
-
-#endif //BOIL_ABSTRACT_H
+#endif //RENDU_COMMON_ABSTRACT_H

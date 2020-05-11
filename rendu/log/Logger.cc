@@ -1,17 +1,27 @@
 //
 // Created by boil on 18-10-3.
 //
-
-#include <rendu/time/TimeZone.h>
 #include "Logger.h"
 
-namespace rendu {
-    namespace log {
+#include "rendu/time/TimeZone.h"
 
-        __thread char t_errnobuf[512];
+const char *LogLevelName[NUM_LOG_LEVELS] =
+    {
+        "TRACE ",
+        "DEBUG ",
+        "INFO  ",
+        "WARN  ",
+        "ERROR ",
+        "FATAL ",
+};
 
-        const char *strerror_tl(int savedErrno) {
-            return strerror_r(savedErrno, t_errnobuf, sizeof t_errnobuf);
+__thread char t_errnobuf[512];
+__thread char t_time[64];
+__thread time_t t_lastSecond;
+
+const char *strerror_tl(int savedErrno)
+{
+    return strerror_r(savedErrno, t_errnobuf, sizeof t_errnobuf);
         }
 
         LogLevel initLogLevel();
@@ -54,8 +64,6 @@ namespace rendu {
         }
 
         Logger::FlushFunc g_flush = defaultFlush;
-    }
-
     extern TimeZone g_logTimeZone;  //在LogImpl.cc中声明
 }
 

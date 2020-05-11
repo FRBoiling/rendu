@@ -2,16 +2,16 @@
 // Created by boil on 18-8-23.
 //
 
-#ifndef BOIL_INTERFACE_H
-#define BOIL_INTERFACE_H
+#ifndef RENDU_COMMON_INTERFACE_H
+#define RENDU_COMMON_INTERFACE_H
 
-namespace rendu {
+namespace rendu
+{
 
 #define interface class
 //#define default public
 #define implements public
 
+} // namespace rendu
 
-}
-
-#endif //BOIL_INTERFACE_H
+#endif //RENDU_COMMON_INTERFACE_H

@@ -1,0 +1,2 @@
+/bin/ar qc ../../lib/librendu_time.a  CMakeFiles/rendu_time.dir/Date.cc.o CMakeFiles/rendu_time.dir/TimeZone.cc.o CMakeFiles/rendu_time.dir/Timestamp.cc.o
+/bin/ranlib ../../lib/librendu_time.a

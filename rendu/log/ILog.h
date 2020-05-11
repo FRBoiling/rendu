@@ -5,11 +5,20 @@
 #ifndef RENDU_LOG_ILOG_H
 #define RENDU_LOG_ILOG_H
 
-#include <rendu/common/interface.h>
+#include "rendu/common/interface.h"
+#include "rendu/common/types.h"
 
-interface ILog{
-public:
-    virtual void initLog() =0;
-};
+using namespace rendu
+{
+    interface ILog
+    {
+        public：
+        ILog();
+        ~ILog();
+
+    public:
+        virtual void initLog() = 0;
+    };
+}
 
 #endif //RENDU_LOG_ILOG_H

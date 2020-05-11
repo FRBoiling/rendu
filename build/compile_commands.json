@@ -1,0 +1,112 @@
+[
+{
+  "directory": "/home/boil/code/rendu/build/rendu/zmalloc",
+  "command": "/bin/gcc-9  -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g   -o CMakeFiles/rendu_zmalloc.dir/zmalloc.c.o   -c /home/boil/code/rendu/rendu/zmalloc/zmalloc.c",
+  "file": "/home/boil/code/rendu/rendu/zmalloc/zmalloc.c"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/poller/DefaultPoller.cc.o -c /home/boil/code/rendu/rendu/net/poller/DefaultPoller.cc",
+  "file": "/home/boil/code/rendu/rendu/net/poller/DefaultPoller.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/poller/EPollPoller.cc.o -c /home/boil/code/rendu/rendu/net/poller/EPollPoller.cc",
+  "file": "/home/boil/code/rendu/rendu/net/poller/EPollPoller.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/poller/PollPoller.cc.o -c /home/boil/code/rendu/rendu/net/poller/PollPoller.cc",
+  "file": "/home/boil/code/rendu/rendu/net/poller/PollPoller.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/Acceptor.cc.o -c /home/boil/code/rendu/rendu/net/Acceptor.cc",
+  "file": "/home/boil/code/rendu/rendu/net/Acceptor.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/Buffer.cc.o -c /home/boil/code/rendu/rendu/net/Buffer.cc",
+  "file": "/home/boil/code/rendu/rendu/net/Buffer.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/Channel.cc.o -c /home/boil/code/rendu/rendu/net/Channel.cc",
+  "file": "/home/boil/code/rendu/rendu/net/Channel.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/Connector.cc.o -c /home/boil/code/rendu/rendu/net/Connector.cc",
+  "file": "/home/boil/code/rendu/rendu/net/Connector.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/EventLoop.cc.o -c /home/boil/code/rendu/rendu/net/EventLoop.cc",
+  "file": "/home/boil/code/rendu/rendu/net/EventLoop.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/EventLoopThread.cc.o -c /home/boil/code/rendu/rendu/net/EventLoopThread.cc",
+  "file": "/home/boil/code/rendu/rendu/net/EventLoopThread.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/EventLoopThreadPool.cc.o -c /home/boil/code/rendu/rendu/net/EventLoopThreadPool.cc",
+  "file": "/home/boil/code/rendu/rendu/net/EventLoopThreadPool.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/InetAddress.cc.o -c /home/boil/code/rendu/rendu/net/InetAddress.cc",
+  "file": "/home/boil/code/rendu/rendu/net/InetAddress.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/Poller.cc.o -c /home/boil/code/rendu/rendu/net/Poller.cc",
+  "file": "/home/boil/code/rendu/rendu/net/Poller.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/Socket.cc.o -c /home/boil/code/rendu/rendu/net/Socket.cc",
+  "file": "/home/boil/code/rendu/rendu/net/Socket.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/SocketsOps.cc.o -c /home/boil/code/rendu/rendu/net/SocketsOps.cc",
+  "file": "/home/boil/code/rendu/rendu/net/SocketsOps.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/TcpClient.cc.o -c /home/boil/code/rendu/rendu/net/TcpClient.cc",
+  "file": "/home/boil/code/rendu/rendu/net/TcpClient.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/TcpConnection.cc.o -c /home/boil/code/rendu/rendu/net/TcpConnection.cc",
+  "file": "/home/boil/code/rendu/rendu/net/TcpConnection.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/TcpServer.cc.o -c /home/boil/code/rendu/rendu/net/TcpServer.cc",
+  "file": "/home/boil/code/rendu/rendu/net/TcpServer.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/Timer.cc.o -c /home/boil/code/rendu/rendu/net/Timer.cc",
+  "file": "/home/boil/code/rendu/rendu/net/Timer.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/rendu/net",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_net.dir/TimerQueue.cc.o -c /home/boil/code/rendu/rendu/net/TimerQueue.cc",
+  "file": "/home/boil/code/rendu/rendu/net/TimerQueue.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/examples/pingpong",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/pingpong_server.dir/server.cc.o -c /home/boil/code/rendu/examples/pingpong/server.cc",
+  "file": "/home/boil/code/rendu/examples/pingpong/server.cc"
+},
+{
+  "directory": "/home/boil/code/rendu/build/examples/pingpong",
+  "command": "/bin/g++-9   -I/home/boil/code/rendu/build -I/home/boil/code/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/pingpong_client.dir/client.cc.o -c /home/boil/code/rendu/examples/pingpong/client.cc",
+  "file": "/home/boil/code/rendu/examples/pingpong/client.cc"
+}
+]

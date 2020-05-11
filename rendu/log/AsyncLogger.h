@@ -2,8 +2,8 @@
 // Created by boil on 18-10-9.
 //
 
-#ifndef RENDU_ASYNCLOGGER_H
-#define RENDU_ASYNCLOGGER_H
+#ifndef RENDU_LOG_ASYNCLOGGER_H
+#define RENDU_LOG_ASYNCLOGGER_H
 
 
 #include <boost/ptr_container/ptr_vector.hpp>

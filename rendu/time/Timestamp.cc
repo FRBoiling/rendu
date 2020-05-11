@@ -3,21 +3,28 @@
 //
 
 #include "Timestamp.h"
-#include <inttypes.h>
 
 #include <sys/time.h>
+#include <stdio.h>
+
+#ifndef __STDC_FORMAT_MACROS
+#define __STDC_FORMAT_MACROS
+#endif
+
+#include <inttypes.h>
 
 using namespace rendu;
 using namespace rendu::time;
 
-static_assert(sizeof(Timestamp) == sizeof(int64_t));
+static_assert(sizeof(Timestamp) == sizeof(int64_t),
+              "Timestamp is same size as int64_t");
 
 string Timestamp::toString() const
 {
     char buf[32] = {0};
     int64_t seconds = microSecondsSinceEpoch_ / kMicroSecondsPerSecond;
     int64_t microseconds = microSecondsSinceEpoch_ % kMicroSecondsPerSecond;
-    snprintf(buf, sizeof(buf)-1, "%" PRId64 ".%06" PRId64 "", seconds, microseconds);
+    snprintf(buf, sizeof(buf) - 1, "%" PRId64 ".%06" PRId64 "", seconds, microseconds);
     return buf;
 }
 

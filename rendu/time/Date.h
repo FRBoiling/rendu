@@ -2,29 +2,34 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_DATE_H
-#define RENDU_DATE_H
+#ifndef RENDU_TIME_DATE_H
+#define RENDU_TIME_DATE_H
 
-#include <rendu/common/Types.h>
+#include "rendu/common/types.h"
+#include "rendu/common/copyable.h"
 
-namespace rendu {
-    namespace time {
+struct tm;
+namespace rendu
+{
+    namespace time
+    {
 
-///
-/// Date in Gregorian calendar.
-///
-/// This class is immutable.
-/// It's recommended to pass it by value, since it's passed in register on x64.
-///
-        class Date //: public boost::less_than_comparable<Date>,
-            // public boost::equality_comparable<Date>
+        ///
+        /// Date in Gregorian calendar.
+        ///
+        /// This class is immutable.
+        /// It's recommended to pass it by value, since it's passed in register on x64.
+        ///
+        class Date : public rendu::copyable
+        //public boost::less_than_comparable<Date>,
+        //public boost::equality_comparable<Date>
         {
         public:
-
-            struct YearMonthDay {
-                int year; // [1900..2500]
-                int month;  // [1..12]
-                int day;  // [1..31]
+            struct YearMonthDay
+            {
+                int year;  // [1900..2500]
+                int month; // [1..12]
+                int day;   // [1..31]
             };
 
             static const int kDaysPerWeek = 7;
@@ -34,7 +39,7 @@ namespace rendu {
             /// Constucts an invalid Date.
             ///
             Date()
-                    : julianDayNumber_(0) {}
+                : julianDayNumber_(0) {}
 
             ///
             /// Constucts a yyyy-mm-dd Date.
@@ -46,7 +51,7 @@ namespace rendu {
             /// Constucts a Date from Julian Day Number.
             ///
             explicit Date(int julianDayNum)
-                    : julianDayNumber_(julianDayNum) {}
+                : julianDayNumber_(julianDayNum) {}
 
             ///
             /// Constucts a Date from struct tm
@@ -55,7 +60,8 @@ namespace rendu {
 
             // default copy/assignment/dtor are Okay
 
-            void swap(Date &that) {
+            void swap(Date &that)
+            {
                 std::swap(julianDayNumber_, that.julianDayNumber_);
             }
 
@@ -68,20 +74,24 @@ namespace rendu {
 
             struct YearMonthDay yearMonthDay() const;
 
-            int year() const {
+            int year() const
+            {
                 return yearMonthDay().year;
             }
 
-            int month() const {
+            int month() const
+            {
                 return yearMonthDay().month;
             }
 
-            int day() const {
+            int day() const
+            {
                 return yearMonthDay().day;
             }
 
             // [0, 1, ..., 6] => [Sunday, Monday, ..., Saturday ]
-            int weekDay() const {
+            int weekDay() const
+            {
                 return (julianDayNumber_ + 1) % kDaysPerWeek;
             }
 
@@ -91,17 +101,19 @@ namespace rendu {
             int julianDayNumber_;
         };
 
-        inline bool operator<(Date x, Date y) {
+        inline bool operator<(Date x, Date y)
+        {
             return x.julianDayNumber() < y.julianDayNumber();
         }
 
-        inline bool operator==(Date x, Date y) {
+        inline bool operator==(Date x, Date y)
+        {
             return x.julianDayNumber() == y.julianDayNumber();
         }
 
-        const int kSecondsPerDay = 24*60*60;
-    };
+        const int kSecondsPerDay = 24 * 60 * 60;
+    } // namespace time
 
-}
+} // namespace rendu
 
-#endif //RENDU_DATE_H
+#endif //RENDU_TIME_DATE_H
