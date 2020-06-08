@@ -1,0 +1,2 @@
+/bin/ar qc ../../lib/librendu_common.a  CMakeFiles/rendu_common.dir/Exception.cc.o CMakeFiles/rendu_common.dir/FixedBuffer.cc.o CMakeFiles/rendu_common.dir/ProcessInfo.cc.o
+/bin/ranlib ../../lib/librendu_common.a

@@ -1,0 +1,268 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "rendu/zmalloc",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "rendu/zmalloc",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "rendu/common",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "rendu/common",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "rendu/util",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "rendu/util",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "rendu/time",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "rendu/time",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "rendu/log",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "rendu/log",
+					"targetIndexes" : 
+					[
+						3
+					]
+				},
+				{
+					"build" : "rendu/thread",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "rendu/thread",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "rendu/net",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "rendu/net",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "examples",
+					"childIndexes" : 
+					[
+						9
+					],
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "examples"
+				},
+				{
+					"build" : "examples/pingpong",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 8,
+					"projectIndex" : 0,
+					"source" : "examples/pingpong",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					],
+					"name" : "rendu",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 9,
+					"id" : "pingpong_client::@2065423ff546b2ef2899",
+					"jsonFile" : "target-pingpong_client-Debug-b41e70a528d45efac8ca.json",
+					"name" : "pingpong_client",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "pingpong_server::@2065423ff546b2ef2899",
+					"jsonFile" : "target-pingpong_server-Debug-b47575bfa507c044c11b.json",
+					"name" : "pingpong_server",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "rendu_common::@500b991cd2793ecb46c5",
+					"jsonFile" : "target-rendu_common-Debug-d302d81edf4e4cd4b7ba.json",
+					"name" : "rendu_common",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "rendu_log::@f9fec663b318eb82407c",
+					"jsonFile" : "target-rendu_log-Debug-a00ae485b86b19fd9dc2.json",
+					"name" : "rendu_log",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "rendu_net::@355b78eb8fd4de2d21ec",
+					"jsonFile" : "target-rendu_net-Debug-1d3caa1a24214faf404c.json",
+					"name" : "rendu_net",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "rendu_thread::@735606bbb35ca4faf3f9",
+					"jsonFile" : "target-rendu_thread-Debug-5a367dc93a0fcedba2a4.json",
+					"name" : "rendu_thread",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "rendu_time::@ff9e6512ba7af2473c75",
+					"jsonFile" : "target-rendu_time-Debug-7bf35c47abc44ed663a5.json",
+					"name" : "rendu_time",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "rendu_util::@3a25e3e517990859cdd9",
+					"jsonFile" : "target-rendu_util-Debug-511bdb7254cf5a275741.json",
+					"name" : "rendu_util",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "rendu_zmalloc::@e79e583b8b1c48192e7a",
+					"jsonFile" : "target-rendu_zmalloc-Debug-954212dc443fdc80d6d4.json",
+					"name" : "rendu_zmalloc",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/boil/GithubRepository/rendu/build",
+		"source" : "/home/boil/GithubRepository/rendu"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

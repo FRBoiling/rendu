@@ -1,0 +1,2 @@
+/bin/ar qc ../../lib/librendu_util.a  CMakeFiles/rendu_util.dir/AppendFile.cc.o CMakeFiles/rendu_util.dir/FileUtil.cc.o CMakeFiles/rendu_util.dir/ReadSmallFIle.cc.o
+/bin/ranlib ../../lib/librendu_util.a

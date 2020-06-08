@@ -1,0 +1,212 @@
+[
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/zmalloc",
+  "command": "/bin/gcc-9  -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g   -o CMakeFiles/rendu_zmalloc.dir/zmalloc.c.o   -c /home/boil/GithubRepository/rendu/rendu/zmalloc/zmalloc.c",
+  "file": "/home/boil/GithubRepository/rendu/rendu/zmalloc/zmalloc.c"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/common",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_common.dir/Exception.cc.o -c /home/boil/GithubRepository/rendu/rendu/common/Exception.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/common/Exception.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/common",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_common.dir/FixedBuffer.cc.o -c /home/boil/GithubRepository/rendu/rendu/common/FixedBuffer.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/common/FixedBuffer.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/common",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_common.dir/ProcessInfo.cc.o -c /home/boil/GithubRepository/rendu/rendu/common/ProcessInfo.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/common/ProcessInfo.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/util",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_util.dir/AppendFile.cc.o -c /home/boil/GithubRepository/rendu/rendu/util/AppendFile.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/util/AppendFile.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/util",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_util.dir/FileUtil.cc.o -c /home/boil/GithubRepository/rendu/rendu/util/FileUtil.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/util/FileUtil.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/util",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_util.dir/ReadSmallFIle.cc.o -c /home/boil/GithubRepository/rendu/rendu/util/ReadSmallFIle.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/util/ReadSmallFIle.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/time",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_time.dir/Date.cc.o -c /home/boil/GithubRepository/rendu/rendu/time/Date.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/time/Date.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/time",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_time.dir/TimeZone.cc.o -c /home/boil/GithubRepository/rendu/rendu/time/TimeZone.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/time/TimeZone.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/time",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_time.dir/Timestamp.cc.o -c /home/boil/GithubRepository/rendu/rendu/time/Timestamp.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/time/Timestamp.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/log",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_log.dir/AsyncLogger.cc.o -c /home/boil/GithubRepository/rendu/rendu/log/AsyncLogger.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/log/AsyncLogger.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/log",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_log.dir/LogFile.cc.o -c /home/boil/GithubRepository/rendu/rendu/log/LogFile.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/log/LogFile.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/log",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_log.dir/LogImpl.cc.o -c /home/boil/GithubRepository/rendu/rendu/log/LogImpl.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/log/LogImpl.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/log",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_log.dir/LogStream.cc.o -c /home/boil/GithubRepository/rendu/rendu/log/LogStream.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/log/LogStream.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/log",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_log.dir/LogStreamObject.cc.o -c /home/boil/GithubRepository/rendu/rendu/log/LogStreamObject.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/log/LogStreamObject.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/log",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_log.dir/Logger.cc.o -c /home/boil/GithubRepository/rendu/rendu/log/Logger.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/log/Logger.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/thread",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_thread.dir/Condition.cc.o -c /home/boil/GithubRepository/rendu/rendu/thread/Condition.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/thread/Condition.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/thread",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_thread.dir/CountDownLatch.cc.o -c /home/boil/GithubRepository/rendu/rendu/thread/CountDownLatch.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/thread/CountDownLatch.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/thread",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_thread.dir/CurrentThread.cc.o -c /home/boil/GithubRepository/rendu/rendu/thread/CurrentThread.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/thread/CurrentThread.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/thread",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_thread.dir/Thread.cc.o -c /home/boil/GithubRepository/rendu/rendu/thread/Thread.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/thread/Thread.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/thread",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_thread.dir/ThreadPool.cc.o -c /home/boil/GithubRepository/rendu/rendu/thread/ThreadPool.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/thread/ThreadPool.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/poller/DefaultPoller.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/poller/DefaultPoller.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/poller/DefaultPoller.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/poller/EPollPoller.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/poller/EPollPoller.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/poller/EPollPoller.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/poller/PollPoller.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/poller/PollPoller.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/poller/PollPoller.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/Acceptor.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/Acceptor.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/Acceptor.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/Buffer.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/Buffer.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/Buffer.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/Channel.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/Channel.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/Channel.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/Connector.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/Connector.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/Connector.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/EventLoop.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/EventLoop.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/EventLoop.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/EventLoopThread.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/EventLoopThread.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/EventLoopThread.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/EventLoopThreadPool.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/EventLoopThreadPool.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/EventLoopThreadPool.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/InetAddress.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/InetAddress.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/InetAddress.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/Poller.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/Poller.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/Poller.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/Socket.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/Socket.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/Socket.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/SocketsOps.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/SocketsOps.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/SocketsOps.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/TcpClient.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/TcpClient.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/TcpClient.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/TcpConnection.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/TcpConnection.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/TcpConnection.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/TcpServer.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/TcpServer.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/TcpServer.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/Timer.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/Timer.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/Timer.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/net",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/rendu_net.dir/TimerQueue.cc.o -c /home/boil/GithubRepository/rendu/rendu/net/TimerQueue.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/net/TimerQueue.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/examples/pingpong",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/pingpong_server.dir/server.cc.o -c /home/boil/GithubRepository/rendu/examples/pingpong/server.cc",
+  "file": "/home/boil/GithubRepository/rendu/examples/pingpong/server.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/examples/pingpong",
+  "command": "g++   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -O0   -std=gnu++14 -o CMakeFiles/pingpong_client.dir/client.cc.o -c /home/boil/GithubRepository/rendu/examples/pingpong/client.cc",
+  "file": "/home/boil/GithubRepository/rendu/examples/pingpong/client.cc"
+}
+]
