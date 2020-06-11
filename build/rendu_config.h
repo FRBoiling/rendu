@@ -7,15 +7,15 @@
 #define VERSION_MINOR 0
 
 // 内存分配器
-#define USE_JEMALLOC
+/* #undef USE_JEMALLOC */
 /* #undef USE_TCMALLOC */
 
 //string
-#define RENDU_STD_STRING
+/* #undef RENDU_STD_STRING */
 
 //log
-#define RENDU_LOG_TRACE
-#define RENDU_LOG_DEBUG
+/* #undef RENDU_LOG_TRACE */
+/* #undef RENDU_LOG_DEBUG */
 
 //thread
-#define CHECK_PTHREAD_RETURN_VALUE
+/* #undef CHECK_PTHREAD_RETURN_VALUE */

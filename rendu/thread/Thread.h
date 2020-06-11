@@ -5,23 +5,23 @@
 #ifndef RENDU_THREAD_H
 #define RENDU_THREAD_H
 
-#include <rendu/common/noncopyable.h>
-#include <functional>
-#include <rendu/common/Types.h>
-#include <atomic>
+#include "rendu/common/noncopyable.h"
+#include "rendu/common/types.h"
 #include "CountDownLatch.h"
-#include "CurrentThread.h"
 
-#include <sys/prctl.h>
-#include <rendu/common/Exception.h>
-
-
-namespace rendu {
-
-    namespace thread {
+#include <functional>
+#include <memory>
+#include <pthread.h>
 
 
-        class Thread : rendu::noncopyable {
+namespace rendu
+{
+
+    namespace thread
+    {
+
+        class Thread : rendu::noncopyable
+        {
         public:
             typedef std::function<void()> ThreadFunc;
 
@@ -56,7 +56,7 @@ namespace rendu {
             static std::atomic_int32_t numCreated_;
         };
 
-    }
-}
+    } // namespace thread
+} // namespace rendu
 
 #endif //RENDU_THREAD_H

@@ -2,10 +2,10 @@
 // Created by boil on 18-10-4.
 //
 
-#ifndef RENDU_CONDITION_H
-#define RENDU_CONDITION_H
+#ifndef RENDU_THREAD_CONDITION_H
+#define RENDU_THREAD_CONDITION_H
 
-#include <rendu/common/noncopyable.h>
+#include "rendu/common/noncopyable.h"
 #include "Mutex.h"
 
 namespace rendu {
@@ -46,4 +46,4 @@ namespace rendu {
     }
 }
 
-#endif //RENDU_CONDITION_H
+#endif //RENDU_THREAD_CONDITION_H

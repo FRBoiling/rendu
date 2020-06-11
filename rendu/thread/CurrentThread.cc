@@ -3,48 +3,76 @@
 //
 
 #include "CurrentThread.h"
-#include <rendu/common/Types.h>
-#include <rendu/time/Timestamp.h>
-#include <sys/syscall.h>
+#include "rendu/common/types.h"
 
-using namespace rendu::thread;
+#include <execinfo.h>
+#include <stdlib.h>
+#include <cxxabi.h>
 
-namespace rendu{
-    namespace thread{
-        namespace CurrentThread {
-            __thread int t_cachedTid = 0;
-            __thread char t_tidString[32];
-            __thread int t_tidStringLength = 6;
-            __thread const char *t_threadName = "unknown";
-            const bool sameType = std::is_same<int, pid_t>::value;
-            static_assert(sameType,"int and pid_t is not sameType");
-        }
-    }
-}
-
-pid_t getTid()
+namespace rendu
 {
-    return static_cast<pid_t>(::syscall(SYS_gettid));
-}
-
-void CurrentThread::cacheTid()
-{
-    if (t_cachedTid == 0)
+    namespace CurrentThread
     {
-        t_cachedTid = getTid();
-        t_tidStringLength = snprintf(t_tidString, sizeof t_tidString, "%5d ", t_cachedTid);
-    }
-}
+        __thread int t_cachedTid = 0;
+        __thread char t_tidString[32];
+        __thread int t_tidStringLength = 6;
+        __thread const char *t_threadName = "unknown";
+        static_assert(std::is_same<int, pid_t>::value, "pid_t should be int");
 
-bool CurrentThread::isMainThread()
-{
-    return tid() == ::getpid();
-}
+        string stackTrace(bool demangle)
+        {
+            string stack;
+            const int max_frames = 200;
+            void *frame[max_frames];
+            int nptrs = ::backtrace(frame, max_frames);
+            char **strings = ::backtrace_symbols(frame, nptrs);
+            if (strings)
+            {
+                size_t len = 256;
+                char *demangled = demangle ? static_cast<char *>(::malloc(len)) : nullptr;
+                for (int i = 1; i < nptrs; ++i) // skipping the 0-th, which is this function
+                {
+                    if (demangle)
+                    {
+                        // https://panthema.net/2008/0901-stacktrace-demangled/
+                        // bin/exception_test(_ZN3Bar4testEv+0x79) [0x401909]
+                        char *left_par = nullptr;
+                        char *plus = nullptr;
+                        for (char *p = strings[i]; *p; ++p)
+                        {
+                            if (*p == '(')
+                                left_par = p;
+                            else if (*p == '+')
+                                plus = p;
+                        }
 
-void CurrentThread::sleepUsec(int64_t usec)
-{
-    struct timespec ts = { 0, 0 };
-    ts.tv_sec = static_cast<time_t>(usec /time::Timestamp::kMicroSecondsPerSecond);
-    ts.tv_nsec = static_cast<long>(usec % time::Timestamp::kMicroSecondsPerSecond * 1000);
-    ::nanosleep(&ts, nullptr);
-}
+                        if (left_par && plus)
+                        {
+                            *plus = '\0';
+                            int status = 0;
+                            char *ret = abi::__cxa_demangle(left_par + 1, demangled, &len, &status);
+                            *plus = '+';
+                            if (status == 0)
+                            {
+                                demangled = ret; // ret could be realloc()
+                                stack.append(strings[i], left_par + 1);
+                                stack.append(demangled);
+                                stack.append(plus);
+                                stack.push_back('\n');
+                                continue;
+                            }
+                        }
+                    }
+                    // Fallback to mangled names
+                    stack.append(strings[i]);
+                    stack.push_back('\n');
+                }
+                free(demangled);
+                free(strings);
+            }
+            return stack;
+        }
+
+
+    } // namespace CurrentThread
+} // namespace rendu

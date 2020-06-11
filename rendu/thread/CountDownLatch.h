@@ -6,7 +6,7 @@
 #define RENDU_COUNTDOWNLATCH_H
 
 
-#include <rendu/common/noncopyable.h>
+#include "rendu/common/noncopyable.h"
 #include "Mutex.h"
 #include "Condition.h"
 

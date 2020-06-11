@@ -1,2 +1,0 @@
-/bin/ar qc ../../lib/librendu_thread.a  CMakeFiles/rendu_thread.dir/Condition.cc.o CMakeFiles/rendu_thread.dir/CountDownLatch.cc.o CMakeFiles/rendu_thread.dir/CurrentThread.cc.o CMakeFiles/rendu_thread.dir/Thread.cc.o CMakeFiles/rendu_thread.dir/ThreadPool.cc.o
-/bin/ranlib ../../lib/librendu_thread.a

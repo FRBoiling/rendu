@@ -1,4 +1,4 @@
-# Install script for directory: /home/boil/code/rendu/examples/pingpong
+# Install script for directory: /home/boil/GithubRepository/rendu/examples/pingpong
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

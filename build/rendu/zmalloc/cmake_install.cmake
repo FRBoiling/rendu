@@ -1,4 +1,4 @@
-# Install script for directory: /home/boil/code/rendu/rendu/zmalloc
+# Install script for directory: /home/boil/GithubRepository/rendu/rendu/zmalloc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

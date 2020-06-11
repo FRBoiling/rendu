@@ -5,111 +5,110 @@
 #ifndef RENDU_LOG_LOGGER_H
 #define RENDU_LOG_LOGGER_H
 
-#include "LogImpl.h"
+#include "rendu/time/Timestamp.h"
 #include "rendu/time/TimeZone.h"
+#include "rendu/log/LogStream.h"
 
 namespace rendu
 {
-    const char *strerror_tl(int savedErrno);
-
-    class LogImpl;
-
-    class Logger
+    namespace log
     {
-    public:
-        enum LogLevel
-        {
-            TRACE,
-            DEBUG,
-            INFO,
-            WARN,
-            ERROR,
-            FATAL,
-            NUM_LOG_LEVELS,
-        };
-
-        // compile time calculation of basename of source file
-        class SourceFile
+        class Logger
         {
         public:
-            template <int N>
-            SourceFile(const char (&arr)[N])
-                : data_(arr),
-                  size_(N - 1)
+            enum LogLevel
             {
-                const char *slash = strrchr(data_, '/'); // builtin function
-                if (slash)
-                {
-                    data_ = slash + 1;
-                    size_ -= static_cast<int>(data_ - arr);
-                }
-            }
+                TRACE,
+                DEBUG,
+                INFO,
+                WARN,
+                ERROR,
+                FATAL,
+                NUM_LOG_LEVELS,
+            };
 
-            explicit SourceFile(const char *filename)
-                : data_(filename)
+            // compile time calculation of basename of source file
+            class SourceFile
             {
-                const char *slash = strrchr(filename, '/');
-                if (slash)
+            public:
+                template <int N>
+                SourceFile(const char (&arr)[N])
+                    : data_(arr),
+                      size_(N - 1)
                 {
-                    data_ = slash + 1;
+                    const char *slash = strrchr(data_, '/'); // builtin function
+                    if (slash)
+                    {
+                        data_ = slash + 1;
+                        size_ -= static_cast<int>(data_ - arr);
+                    }
                 }
-                size_ = static_cast<int>(strlen(data_));
-            }
 
-            const char *data_;
-            int size_;
+                explicit SourceFile(const char *filename)
+                    : data_(filename)
+                {
+                    const char *slash = strrchr(filename, '/');
+                    if (slash)
+                    {
+                        data_ = slash + 1;
+                    }
+                    size_ = static_cast<int>(strlen(data_));
+                }
+
+                const char *data_;
+                int size_;
+            };
+
+            Logger(SourceFile file, int line);
+
+            Logger(SourceFile file, int line, LogLevel level);
+
+            Logger(SourceFile file, int line, LogLevel level, const char *func);
+
+            Logger(SourceFile file, int line, bool toAbort);
+
+            ~Logger();
+
+            LogStream &stream() { return impl_.stream_; }
+
+            static LogLevel logLevel();
+
+            static void setLogLevel(LogLevel level);
+
+            typedef void (*OutputFunc)(const char *msg, int len);
+
+            typedef void (*FlushFunc)();
+
+            static void setOutput(OutputFunc);
+
+            static void setFlush(FlushFunc);
+
+            static void setTimeZone(const time::TimeZone &tz);
+
+        private:
+            class Impl
+            {
+            public:
+                Impl(LogLevel level, int old_errno, const SourceFile &file, int line);
+                void formatTime();
+                void finish();
+
+                time::Timestamp time_;
+                LogStream stream_;
+                LogLevel level_;
+                int line_;
+                SourceFile basename_;
+            };
+
+            Impl impl_;
         };
 
-        Logger(SourceFile file, int line);
+        extern Logger::LogLevel g_logLevel;
 
-        Logger(SourceFile file, int line, LogLevel level);
-
-        Logger(SourceFile file, int line, LogLevel level, const char *func);
-
-        Logger(SourceFile file, int line, bool toAbort);
-
-        ~Logger();
-
-        LogStream &stream() { return log_impl_.stream_; }
-
-        static LogLevel logLevel();
-
-        static void setLogLevel(LogLevel level);
-
-        typedef void (*OutputFunc)(const char *msg, size_t len);
-
-        typedef void (*FlushFunc)();
-
-        static void setOutput(OutputFunc);
-
-        static void setFlush(FlushFunc);
-
-        static void setTimeZone(const TimeZone &tz);
-
-    private:
-        class Impl
+        inline Logger::LogLevel Logger::logLevel()
         {
-        public:
-            Impl(LogLevel level, int old_errno, const SourceFile &file, int line);
-            void formatTime();
-            void finish();
-
-            Timestamp time_;
-            LogStream stream_;
-            LogLevel level_;
-            int line_;
-            SourceFile basename_;
-        };
-        LogImpl log_impl_;
-    };
-
-    extern Logger::LogLevel g_logLevel;
-
-    inline Logger::LogLevel Logger::logLevel()
-    {
-        return g_logLevel;
-    }
-
+            return g_logLevel;
+        }
 
 //
 // CAUTION: do not write:
@@ -143,24 +142,27 @@ namespace rendu
 #define LOG_SYSERR Logger(__FILE__, __LINE__, false).stream()
 #define LOG_SYSFATAL Logger(__FILE__, __LINE__, true).stream()
 
-    const char *strerror_tl(int savedErrno);
+        const char *strerror_tl(int savedErrno);
 
-    // Taken from glog/logging.h
-    // Check that the input is non NULL.  This very useful in constructor initializer lists.
+        // Taken from glog/logging.h
+        // Check that the input is non NULL.  This very useful in constructor initializer lists.
 
 #define CHECK_NOTNULL(val) \
     CheckNotNull(__FILE__, __LINE__, "'" #val "' Must be non NULL", (val))
 
-    // A small helper for CHECK_NOTNULL().
-    template <typename T>
-    T *CheckNotNull(SourceFile file, int line, const char *names, T *ptr)
-    {
-        if (ptr == NULL)
+        // A small helper for CHECK_NOTNULL().
+        template <typename T>
+        T *CheckNotNull(SourceFile file, int line, const char *names, T *ptr)
         {
-            Logger(file, line, FATAL).stream() << names;
-        }
-        return ptr;
-    }
+            if (ptr == NULL)
+            {
+                Logger(file, line, FATAL).stream() << names;
+            }
+            return ptr;
+        };
+
+    } // namespace log
+
 } // namespace rendu
 
 #endif //RENDU_LOG_LOGGER_H

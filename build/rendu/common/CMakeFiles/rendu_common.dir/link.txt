@@ -1,2 +1,0 @@
-/bin/ar qc ../../lib/librendu_common.a  CMakeFiles/rendu_common.dir/File.cc.o
-/bin/ranlib ../../lib/librendu_common.a

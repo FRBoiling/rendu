@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/boil/code/rendu/rendu/zmalloc/atomicvar.h
+/home/boil/GithubRepository/rendu/rendu/zmalloc/atomicvar.h
 pthread.h
 -
 
-/home/boil/code/rendu/rendu/zmalloc/zmalloc.c
+/home/boil/GithubRepository/rendu/rendu/zmalloc/zmalloc.c
 stdio.h
 -
 stdlib.h
@@ -20,7 +20,7 @@ string.h
 pthread.h
 -
 zmalloc.h
-/home/boil/code/rendu/rendu/zmalloc/zmalloc.h
+/home/boil/GithubRepository/rendu/rendu/zmalloc/zmalloc.h
 unistd.h
 -
 sys/types.h
@@ -44,11 +44,11 @@ mach/task.h
 mach/mach_init.h
 -
 
-/home/boil/code/rendu/rendu/zmalloc/zmalloc.h
+/home/boil/GithubRepository/rendu/rendu/zmalloc/zmalloc.h
 atomicvar.h
-/home/boil/code/rendu/rendu/zmalloc/atomicvar.h
+/home/boil/GithubRepository/rendu/rendu/zmalloc/atomicvar.h
 rendu_config.h
-/home/boil/code/rendu/rendu/zmalloc/rendu_config.h
+/home/boil/GithubRepository/rendu/rendu/zmalloc/rendu_config.h
 google/tcmalloc.h
 -
 jemalloc/jemalloc.h

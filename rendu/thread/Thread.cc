@@ -1,10 +1,9 @@
 //
 // Created by boil on 18-10-4.
 //
-
-#include <atomic>
-#include <rendu/log/Logger.h>
 #include "Thread.h"
+#include "CurrentThread.h"
+#include "rendu/log/Logger.h"
 
 using namespace rendu::thread;
 using namespace rendu::log;
