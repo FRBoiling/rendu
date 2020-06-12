@@ -5,13 +5,11 @@
 #ifndef RENDU_TIMERID_H
 #define RENDU_TIMERID_H
 
-#include <rendu/common/copyable.h>
-#include <rendu/common/Types.h>
-#include "Timer.h"
+#include "rendu/common/copyable.h"
 
 namespace rendu
 {
-    namespace net{
+    namespace time{
 ///
 /// An opaque identifier, for canceling Timer.
 ///

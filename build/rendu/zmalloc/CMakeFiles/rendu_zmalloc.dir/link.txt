@@ -1,2 +1,0 @@
-/bin/ar qc ../../lib/librendu_zmalloc.a  CMakeFiles/rendu_zmalloc.dir/zmalloc.c.o
-/bin/ranlib ../../lib/librendu_zmalloc.a

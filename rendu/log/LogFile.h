@@ -5,9 +5,9 @@
 #ifndef RENDU_LOGFILE_H
 #define RENDU_LOGFILE_H
 
-#include rendu/common/noncopyable.h>
+#include "rendu/common/noncopyable.h"
 #include <memory>
-#include <rendu/thread/Mutex.h>
+#include "rendu/thread/Mutex.h"
 #include <rendu/util/AppendFile.h>
 #include <rendu/common/Types.h>
 

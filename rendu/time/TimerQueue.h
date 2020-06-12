@@ -8,7 +8,6 @@
 #include <vector>
 
 #include "EventLoop.h"
-#include "Channel.h"
 
 namespace rendu{
     namespace net{

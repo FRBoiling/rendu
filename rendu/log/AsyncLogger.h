@@ -5,46 +5,49 @@
 #ifndef RENDU_LOG_ASYNCLOGGER_H
 #define RENDU_LOG_ASYNCLOGGER_H
 
-
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <rendu/common/FixedBuffer.h>
 #include <rendu/thread/Thread.h>
 
-namespace rendu {
-    namespace log {
+namespace rendu
+{
+    namespace log
+    {
 
-        class AsyncLogger : rendu::noncopyable {
+        class AsyncLogger : rendu::noncopyable
+        {
         public:
-
             AsyncLogger(const string &basename,
                         off_t rollSize,
                         int flushInterval = 3);
 
-            ~AsyncLogger() {
-                if (running_) {
+            ~AsyncLogger()
+            {
+                if (running_)
+                {
                     stop();
                 }
             }
 
             void append(const char *logline, int len);
 
-            void start() {
+            void start()
+            {
                 running_ = true;
                 thread_.start();
                 latch_.wait();
             }
 
-            void stop() {
+            void stop()
+            {
                 running_ = false;
                 cond_.notify();
                 thread_.join();
             }
 
         private:
-
             // declare but not define, prevent compiler-synthesized functions
-            AsyncLogger(const AsyncLogger &);  // ptr_container
-            void operator=(const AsyncLogger &);  // ptr_container
+            AsyncLogger(const AsyncLogger &);    // ptr_container
+            void operator=(const AsyncLogger &); // ptr_container
 
             void threadFunc();
 
@@ -65,8 +68,7 @@ namespace rendu {
             BufferVector buffers_;
         };
 
-
-    }
-}
+    } // namespace log
+} // namespace rendu
 
 #endif //RENDU_ASYNCLOGGER_H

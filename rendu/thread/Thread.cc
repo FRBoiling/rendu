@@ -5,122 +5,189 @@
 #include "CurrentThread.h"
 #include "rendu/log/Logger.h"
 
+#include <sys/prctl.h>
+
 using namespace rendu::thread;
 using namespace rendu::log;
 
-namespace rendu {
-    namespace thread {
+namespace rendu
+{
+    namespace thread
+    {
 
-        struct ThreadData {
-            typedef Thread::ThreadFunc ThreadFunc;
-            const ThreadFunc func_;
-            const string name_;
+        pid_t gettid()
+        {
+            return static_cast<pid_t>(::syscall(SYS_gettid));
+        }
+
+        void afterFork()
+        {
+            rendu::CurrentThread::t_cachedTid = 0;
+            rendu::CurrentThread::t_threadName = "main";
+            CurrentThread::tid();
+            // no need to call pthread_atfork(NULL, NULL, &afterFork);
+        }
+
+        class ThreadNameInitializer
+        {
+        public:
+            ThreadNameInitializer()
+            {
+                rendu::CurrentThread::t_threadName = "main";
+                CurrentThread::tid();
+                pthread_atfork(NULL, NULL, &afterFork);
+            }
+        };
+
+        ThreadNameInitializer init;
+
+        struct ThreadData
+        {
+            typedef rendu::thread::ThreadFunc ThreadFunc;
+            ThreadFunc func_;
+            string name_;
             pid_t *tid_;
             CountDownLatch *latch_;
 
-//            ThreadData(ThreadFunc func, string name, pid_t *tid, CountDownLatch *latch)
-//                    : func_(move(func)),
-//                      name_(move(name)),
-//                      tid_(tid),
-//                      latch_(latch) {}
+            ThreadData(ThreadFunc func,
+                       const string &name,
+                       pid_t *tid,
+                       CountDownLatch *latch)
+                : func_(std::move(func)),
+                  name_(name),
+                  tid_(tid),
+                  latch_(latch)
+            {
+            }
 
-
-            ThreadData(const ThreadFunc &func,const string &name, pid_t *tid, CountDownLatch *latch)
-                    : func_(func),
-                      name_(name),
-                      tid_(tid),
-                      latch_(latch) {}
-
-            void runInThread() {
-                *tid_ = CurrentThread::tid();
-                tid_ = nullptr;
+            void runInThread()
+            {
+                *tid_ = rendu::CurrentThread::tid();
+                tid_ = NULL;
                 latch_->countDown();
-                latch_ = nullptr;
+                latch_ = NULL;
 
-                CurrentThread::t_threadName = name_.empty() ? "muduoThread" : name_.c_str();
-
-                prctl(PR_SET_NAME, CurrentThread::t_threadName);
-
-                try {
+                rendu::CurrentThread::t_threadName = name_.empty() ? "muduoThread" : name_.c_str();
+                ::prctl(PR_SET_NAME, rendu::CurrentThread::t_threadName);
+                try
+                {
                     func_();
-                    CurrentThread::t_threadName = "finished";
+                    rendu::CurrentThread::t_threadName = "finished";
                 }
-                catch (const Exception &ex) {
-                    CurrentThread::t_threadName = "crashed";
+                catch (const Exception &ex)
+                {
+                    rendu::CurrentThread::t_threadName = "crashed";
                     fprintf(stderr, "exception caught in Thread %s\n", name_.c_str());
                     fprintf(stderr, "reason: %s\n", ex.what());
                     fprintf(stderr, "stack trace: %s\n", ex.stackTrace());
                     abort();
                 }
-                catch (const std::exception &ex) {
-                    CurrentThread::t_threadName = "crashed";
+                catch (const std::exception &ex)
+                {
+                    rendu::CurrentThread::t_threadName = "crashed";
                     fprintf(stderr, "exception caught in Thread %s\n", name_.c_str());
                     fprintf(stderr, "reason: %s\n", ex.what());
                     abort();
                 }
-                catch (...) {
-                    CurrentThread::t_threadName = "crashed";
+                catch (...)
+                {
+                    rendu::CurrentThread::t_threadName = "crashed";
                     fprintf(stderr, "unknown exception caught in Thread %s\n", name_.c_str());
                     throw; // rethrow
                 }
             }
         };
 
-        std::atomic_int32_t Thread::numCreated_;
-    }
-}
+        void *startThread(void *obj)
+        {
+            ThreadData *data = static_cast<ThreadData *>(obj);
+            data->runInThread();
+            delete data;
+            return NULL;
+        }
 
-Thread::Thread(ThreadFunc func,  string n)
+    } // namespace thread
+
+    void CurrentThread::cacheTid()
+    {
+        if (t_cachedTid == 0)
+        {
+            t_cachedTid = detail::gettid();
+            t_tidStringLength = snprintf(t_tidString, sizeof t_tidString, "%5d ", t_cachedTid);
+        }
+    }
+
+    bool CurrentThread::isMainThread()
+    {
+        return tid() == ::getpid();
+    }
+
+    void CurrentThread::sleepUsec(int64_t usec)
+    {
+        struct timespec ts = {0, 0};
+        ts.tv_sec = static_cast<time_t>(usec /time::Timestamp::kMicroSecondsPerSecond);
+        ts.tv_nsec = static_cast<long>(usec % time::Timestamp::kMicroSecondsPerSecond * 1000);
+        ::nanosleep(&ts, NULL);
+    }
+
+    AtomicInt32 Thread::numCreated_;
+
+    Thread::Thread(ThreadFunc func, const string &n)
         : started_(false),
           joined_(false),
           pthreadId_(0),
           tid_(0),
           func_(std::move(func)),
-          name_(std::move(n)),
-          latch_(1) {
-    setDefaultName();
-}
-
-Thread::~Thread() {
-    if (started_ && !joined_) {
-        pthread_detach(pthreadId_);
+          name_(n),
+          latch_(1)
+    {
+        setDefaultName();
     }
-}
 
-void Thread::setDefaultName() {
-//    int num = numCreated_.incrementAndGet();
-    int num = numCreated_++;
-    if (name_.empty()) {
-        char buf[32];
-        snprintf(buf, sizeof buf, "Thread%d", num);
-        name_ = buf;
+    Thread::~Thread()
+    {
+        if (started_ && !joined_)
+        {
+            pthread_detach(pthreadId_);
+        }
     }
-}
 
-void *startThread(void *obj) {
-    auto data = static_cast<ThreadData *>(obj);
-    data->runInThread();
-    delete data;
-    return nullptr;
-}
-
-void Thread::start() {
-    assert(!started_);
-    started_ = true;
-    auto data = new ThreadData(func_, name_, &tid_, &latch_);
-    if (pthread_create(&pthreadId_, nullptr, &startThread, data)) {
-        started_ = false;
-        delete data; // or no delete?
-        LOG_SYSFATAL << "Failed in pthread_create";
-    } else {
-        latch_.wait();
-        assert(tid_ > 0);
+    void Thread::setDefaultName()
+    {
+        int num = numCreated_.incrementAndGet();
+        if (name_.empty())
+        {
+            char buf[32];
+            snprintf(buf, sizeof buf, "Thread%d", num);
+            name_ = buf;
+        }
     }
-}
 
-int Thread::join() {
-    assert(started_);
-    assert(!joined_);
-    joined_ = true;
-    return pthread_join(pthreadId_, nullptr);
+    void Thread::start()
+    {
+        assert(!started_);
+        started_ = true;
+        // FIXME: move(func_)
+        thread::ThreadData *data = new thread::ThreadData(func_, name_, &tid_, &latch_);
+        if (pthread_create(&pthreadId_, NULL, &thread::startThread, data))
+        {
+            started_ = false;
+            delete data; // or no delete?
+            LOG_SYSFATAL << "Failed in pthread_create";
+        }
+        else
+        {
+            latch_.wait();
+            assert(tid_ > 0);
+        }
+    }
+
+    int Thread::join()
+    {
+        assert(started_);
+        assert(!joined_);
+        joined_ = true;
+        return pthread_join(pthreadId_, NULL);
+    }
+
 }
