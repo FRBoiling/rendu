@@ -2,16 +2,14 @@
 // Created by boil on 18-10-9.
 //
 
-#ifndef RENDU_LOG_ASYNCLOGGER_H
-#define RENDU_LOG_ASYNCLOGGER_H
+#ifndef RENDU_ASYNCLOGGER_H
+#define RENDU_ASYNCLOGGER_H
 
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <rendu/thread/Thread.h>
 
 namespace rendu
 {
-    namespace log
-    {
 
         class AsyncLogger : rendu::noncopyable
         {
@@ -68,7 +66,6 @@ namespace rendu
             BufferVector buffers_;
         };
 
-    } // namespace log
 } // namespace rendu
 
 #endif //RENDU_ASYNCLOGGER_H

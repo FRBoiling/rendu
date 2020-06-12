@@ -2,8 +2,8 @@
 // Created by boil on 18-10-11.
 //
 
-#ifndef RENDU_COMMON_NONCOPYABLE_H
-#define RENDU_COMMON_NONCOPYABLE_H
+#ifndef RENDU_NONCOPYABLE_H
+#define RENDU_NONCOPYABLE_H
 
 namespace rendu
 {
@@ -29,4 +29,4 @@ namespace rendu
 
 } // namespace rendu
 
-#endif //RENDU_COMMON_NONCOPYABLE_H
+#endif //RENDU_NONCOPYABLE_H

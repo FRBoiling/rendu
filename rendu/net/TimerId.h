@@ -2,14 +2,13 @@
 // Created by boil on 20-4-21.
 //
 
-#ifndef RENDU_TIMERID_H
-#define RENDU_TIMERID_H
+#ifndef RENDURID_H
+#define RENDURID_H
 
 #include "rendu/common/copyable.h"
 
 namespace rendu
 {
-    namespace time{
 ///
 /// An opaque identifier, for canceling Timer.
 ///
@@ -35,8 +34,7 @@ namespace rendu
             Timer* timer_;
             int64_t sequence_;
         };
-    }
 }
 
 
-#endif //RENDU_TIMERID_H
+#endif //RENDURID_H

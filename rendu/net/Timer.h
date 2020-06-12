@@ -2,17 +2,12 @@
 // Created by boil on 20-4-24.
 //
 
-#ifndef RENDU_TIMER_H
-#define RENDU_TIMER_H
+#ifndef RENDUR_H
+#define RENDUR_H
 
-
-#include <rendu/time/Timestamp.h>
-#include <rendu/common/noncopyable.h>
-#include <rendu/common/Atomic.h>
-#include "Callbacks.h"
+#include "rendu/common/noncopyable.h"
 
 namespace rendu {
-    namespace net {
 ///
 /// Internal class for timer event.
 ///
@@ -59,8 +54,7 @@ namespace rendu {
 
             static AtomicInt64 s_numCreated_;
         };
-    }
 }
 
 
-#endif //RENDU_TIMER_H
+#endif //RENDUR_H

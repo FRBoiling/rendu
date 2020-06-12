@@ -2,13 +2,13 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_LOGMODEL_H
-#define RENDU_LOGMODEL_H
+#ifndef RENDUMODEL_H
+#define RENDUMODEL_H
 
 #include <rendu/common/StringPiece.h>
 
-namespace rendu {
-    namespace log {
+namespace rendu 
+{
 
         // helper class for known string length at compile time
         class T {
@@ -102,4 +102,4 @@ namespace rendu {
 }
 
 
-#endif //RENDU_LOGMODEL_H
+#endif //RENDUMODEL_H

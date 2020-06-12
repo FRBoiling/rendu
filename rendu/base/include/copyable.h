@@ -2,8 +2,8 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_COMMON_COPYABLE_H
-#define RENDU_COMMON_COPYABLE_H
+#ifndef RENDU_COPYABLE_H
+#define RENDU_COPYABLE_H
 
 namespace rendu
 {
@@ -19,4 +19,4 @@ namespace rendu
 
 } // namespace rendu
 
-#endif //RENDU_COMMON_COPYABLE_H
+#endif //RENDU_COPYABLE_H

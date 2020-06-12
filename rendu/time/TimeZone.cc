@@ -19,151 +19,146 @@
 
 namespace rendu
 {
-    namespace time
+    //    struct Localtime {
+    //         time_t gmtOffset;
+    //         bool isDst;
+    //         int arrbIdx;
+
+    //         Localtime(time_t offset, bool dst, int arrb)
+    //                 : gmtOffset(offset), isDst(dst), arrbIdx(arrb) {}
+    //     };
+
+    struct Transition
     {
-        //    struct Localtime {
-        //         time_t gmtOffset;
-        //         bool isDst;
-        //         int arrbIdx;
+        time_t gmttime;
+        time_t localtime;
+        int localtimeIdx;
 
-        //         Localtime(time_t offset, bool dst, int arrb)
-        //                 : gmtOffset(offset), isDst(dst), arrbIdx(arrb) {}
-        //     };
+        Transition(time_t t, time_t l, int localIdx)
+            : gmttime(t), localtime(l), localtimeIdx(localIdx) {}
+    };
 
-        struct Transition
+    struct Comp
+    {
+        bool compareGmt;
+
+        Comp(bool gmt)
+            : compareGmt(gmt)
         {
-            time_t gmttime;
-            time_t localtime;
-            int localtimeIdx;
-
-            Transition(time_t t, time_t l, int localIdx)
-                : gmttime(t), localtime(l), localtimeIdx(localIdx) {}
-        };
-
-        struct Comp
-        {
-            bool compareGmt;
-
-            Comp(bool gmt)
-                : compareGmt(gmt)
-            {
-            }
-
-            bool operator()(const Transition &lhs, const Transition &rhs) const
-            {
-                if (compareGmt)
-                    return lhs.gmttime < rhs.gmttime;
-                else
-                    return lhs.localtime < rhs.localtime;
-            }
-
-            bool equal(const Transition &lhs, const Transition &rhs) const
-            {
-                if (compareGmt)
-                    return lhs.gmttime == rhs.gmttime;
-                else
-                    return lhs.localtime == rhs.localtime;
-            }
-        };
-
-        struct Localtime
-        {
-            time_t gmtOffset;
-            bool isDst;
-            int arrbIdx;
-
-            Localtime(time_t offset, bool dst, int arrb)
-                : gmtOffset(offset), isDst(dst), arrbIdx(arrb) {}
-        };
-
-        // bool readTimeZoneFile(const char *zonefile, struct TimeZone::Data *data);
-
-        inline void fillHMS(unsigned seconds, struct tm *utc)
-        {
-            utc->tm_sec = seconds % 60;
-            unsigned minutes = seconds / 60;
-            utc->tm_min = minutes % 60;
-            utc->tm_hour = minutes / 60;
         }
 
-        const int kSecondsPerDay = 24 * 60 * 60;
-
-        bool readTimeZoneFile(const char *zonefile, struct TimeZone::Data *data)
+        bool operator()(const Transition &lhs, const Transition &rhs) const
         {
-            File f(zonefile);
-            if (f.valid())
-            {
-                try
-                {
-                    string head = f.readBytes(4);
-                    if (head != "TZif")
-                        throw std::logic_error("bad head");
-                    string version = f.readBytes(1);
-                    f.readBytes(15);
-
-                    int32_t isgmtcnt = f.readInt32();
-                    int32_t isstdcnt = f.readInt32();
-                    int32_t leapcnt = f.readInt32();
-                    int32_t timecnt = f.readInt32();
-                    int32_t typecnt = f.readInt32();
-                    int32_t charcnt = f.readInt32();
-
-                    std::vector<int32_t> trans;
-                    std::vector<int> localtimes;
-                    trans.reserve(timecnt);
-                    for (int i = 0; i < timecnt; ++i)
-                    {
-                        trans.push_back(f.readInt32());
-                    }
-
-                    for (int i = 0; i < timecnt; ++i)
-                    {
-                        uint8_t local = f.readUInt8();
-                        localtimes.push_back(local);
-                    }
-
-                    for (int i = 0; i < typecnt; ++i)
-                    {
-                        int32_t gmtoff = f.readInt32();
-                        uint8_t isdst = f.readUInt8();
-                        uint8_t abbrind = f.readUInt8();
-
-                        data->localtimes.push_back(Localtime(gmtoff, isdst, abbrind));
-                    }
-
-                    for (int i = 0; i < timecnt; ++i)
-                    {
-                        int localIdx = localtimes[i];
-                        time_t localtime = trans[i] + data->localtimes[localIdx].gmtOffset;
-                        data->transitions.push_back(Transition(trans[i], localtime, localIdx));
-                    }
-
-                    data->abbreviation = f.readBytes(charcnt);
-
-                    // leapcnt
-                    for (int i = 0; i < leapcnt; ++i)
-                    {
-                        // int32_t leaptime = f.readInt32();
-                        // int32_t cumleap = f.readInt32();
-                    }
-                    // FIXME
-                    (void)isstdcnt;
-                    (void)isgmtcnt;
-                }
-                catch (std::logic_error &e)
-                {
-                    fprintf(stderr, "%s\n", e.what());
-                }
-            }
-            return true;
+            if (compareGmt)
+                return lhs.gmttime < rhs.gmttime;
+            else
+                return lhs.localtime < rhs.localtime;
         }
 
-    } // namespace time
+        bool equal(const Transition &lhs, const Transition &rhs) const
+        {
+            if (compareGmt)
+                return lhs.gmttime == rhs.gmttime;
+            else
+                return lhs.localtime == rhs.localtime;
+        }
+    };
+
+    struct Localtime
+    {
+        time_t gmtOffset;
+        bool isDst;
+        int arrbIdx;
+
+        Localtime(time_t offset, bool dst, int arrb)
+            : gmtOffset(offset), isDst(dst), arrbIdx(arrb) {}
+    };
+
+    // bool readTimeZoneFile(const char *zonefile, struct TimeZone::Data *data);
+
+    inline void fillHMS(unsigned seconds, struct tm *utc)
+    {
+        utc->tm_sec = seconds % 60;
+        unsigned minutes = seconds / 60;
+        utc->tm_min = minutes % 60;
+        utc->tm_hour = minutes / 60;
+    }
+
+    const int kSecondsPerDay = 24 * 60 * 60;
+
+    bool readTimeZoneFile(const char *zonefile, struct TimeZone::Data *data)
+    {
+        File f(zonefile);
+        if (f.valid())
+        {
+            try
+            {
+                string head = f.readBytes(4);
+                if (head != "TZif")
+                    throw std::logic_error("bad head");
+                string version = f.readBytes(1);
+                f.readBytes(15);
+
+                int32_t isgmtcnt = f.readInt32();
+                int32_t isstdcnt = f.readInt32();
+                int32_t leapcnt = f.readInt32();
+                int32_t timecnt = f.readInt32();
+                int32_t typecnt = f.readInt32();
+                int32_t charcnt = f.readInt32();
+
+                std::vector<int32_t> trans;
+                std::vector<int> localtimes;
+                trans.reserve(timecnt);
+                for (int i = 0; i < timecnt; ++i)
+                {
+                    trans.push_back(f.readInt32());
+                }
+
+                for (int i = 0; i < timecnt; ++i)
+                {
+                    uint8_t local = f.readUInt8();
+                    localtimes.push_back(local);
+                }
+
+                for (int i = 0; i < typecnt; ++i)
+                {
+                    int32_t gmtoff = f.readInt32();
+                    uint8_t isdst = f.readUInt8();
+                    uint8_t abbrind = f.readUInt8();
+
+                    data->localtimes.push_back(Localtime(gmtoff, isdst, abbrind));
+                }
+
+                for (int i = 0; i < timecnt; ++i)
+                {
+                    int localIdx = localtimes[i];
+                    time_t localtime = trans[i] + data->localtimes[localIdx].gmtOffset;
+                    data->transitions.push_back(Transition(trans[i], localtime, localIdx));
+                }
+
+                data->abbreviation = f.readBytes(charcnt);
+
+                // leapcnt
+                for (int i = 0; i < leapcnt; ++i)
+                {
+                    // int32_t leaptime = f.readInt32();
+                    // int32_t cumleap = f.readInt32();
+                }
+                // FIXME
+                (void)isstdcnt;
+                (void)isgmtcnt;
+            }
+            catch (std::logic_error &e)
+            {
+                fprintf(stderr, "%s\n", e.what());
+            }
+        }
+        return true;
+    }
+
 } // namespace rendu
 
 using namespace rendu;
-using namespace rendu::time;
-
 struct TimeZone::Data
 {
     std::vector<Transition> transitions;
@@ -307,4 +302,3 @@ time_t TimeZone::fromUtcTime(int year, int month, int day,
     time_t days = date.julianDayNumber() - Date::kJulianDayOf1970_01_01;
     return days * kSecondsPerDay + secondsInDay;
 }
-

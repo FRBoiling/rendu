@@ -2,11 +2,8 @@
 // Created by boil on 18-8-23.
 //
 
-#ifndef RENDU_COMMON_FILE_H
-#define RENDU_COMMON_FILE_H
-
-#include "rendu/common/noncopyable.h"
-#include "rendu/common/types.h"
+#ifndef RENDU_FILE_H
+#define RENDU_FILE_H
 
 using namespace std;
 

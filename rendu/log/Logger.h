@@ -2,8 +2,8 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_LOG_LOGGER_H
-#define RENDU_LOG_LOGGER_H
+#ifndef RENDUGER_H
+#define RENDUGER_H
 
 #include "rendu/time/Timestamp.h"
 #include "rendu/time/TimeZone.h"
@@ -11,8 +11,6 @@
 
 namespace rendu
 {
-    namespace log
-    {
         class Logger
         {
         public:
@@ -24,7 +22,7 @@ namespace rendu
                 WARN,
                 ERROR,
                 FATAL,
-                NUM_LOG_LEVELS,
+                NUM_LEVELS,
             };
 
             // compile time calculation of basename of source file
@@ -161,8 +159,7 @@ namespace rendu
             return ptr;
         };
 
-    } // namespace log
 
 } // namespace rendu
 
-#endif //RENDU_LOG_LOGGER_H
+#endif //RENDUGER_H

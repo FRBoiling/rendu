@@ -2,8 +2,8 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_COMMON_TYPES_H
-#define RENDU_COMMON_TYPES_H
+#ifndef RENDU_TYPES_H
+#define RENDU_TYPES_H
 
 #include <stdint.h>
 #include <string.h> // memset
@@ -67,4 +67,4 @@ namespace rendu
 
 } // namespace rendu
 
-#endif //RENDU_COMMON_TYPES_H
+#endif //RENDU_TYPES_H

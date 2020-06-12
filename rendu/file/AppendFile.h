@@ -5,9 +5,9 @@
 #ifndef RENDU_FILE_APPENDFILE_H
 #define RENDU_FILE_APPENDFILE_H
 
-#include "rendu/common/types.h"
-#include "rendu/common/noncopyable.h"
-#include "rendu/common/stringpiece.h"
+#include "rendu/base/types.h"
+#include "rendu/base/noncopyable.h"
+#include "rendu/base/stringpiece.h"
 
 namespace rendu
 {

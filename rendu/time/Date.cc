@@ -7,12 +7,9 @@
 #include <time.h>  // struct tm
 
 using namespace rendu;
-using namespace rendu::time;
 
 namespace rendu
 {
-    namespace time
-    {
         // algorithm and explanation see:
         // http://www.faqs.org/faqs/calendars/faq/part2/
         // http://blog.csdn.net/Solstice
@@ -44,11 +41,9 @@ namespace rendu
 
         const int Date::kJulianDayOf1970_01_01 = getJulianDayNumber(1970, 1, 1);
 
-    } // namespace time
 } // namespace rendu
 
 using namespace rendu;
-using namespace rendu::time;
 
 Date::Date(int y, int m, int d)
     : julianDayNumber_(getJulianDayNumber(y, m, d))

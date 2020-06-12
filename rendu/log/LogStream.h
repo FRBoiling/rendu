@@ -2,8 +2,8 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_LOG_LOGSTREAM_H
-#define RENDU_LOG_LOGSTREAM_H
+#ifndef RENDUSTREAM_H
+#define RENDUSTREAM_H
 
 #include "rendu/common/noncopyable.h"
 #include "rendu/common/stringpiece.h"
@@ -11,8 +11,6 @@
 
 namespace rendu
 {
-    namespace log
-    {
 
         class LogStream : noncopyable
         {
@@ -137,7 +135,6 @@ namespace rendu
         // Requires n >= 0
         string formatIEC(int64_t n);
 
-    } // namespace log
 } // namespace rendu
 
-#endif //RENDU_LOG_LOGSTREAM_H
+#endif //RENDUSTREAM_H

@@ -2,17 +2,12 @@
 // Created by boil on 18-10-3.
 //
 
-#ifndef RENDU_TIME_DATE_H
-#define RENDU_TIME_DATE_H
-
-#include "rendu/common/types.h"
-#include "rendu/common/copyable.h"
+#ifndef RENDU_DATE_H
+#define RENDU_DATE_H
 
 struct tm;
 namespace rendu
 {
-    namespace time
-    {
 
         ///
         /// Date in Gregorian calendar.
@@ -112,8 +107,7 @@ namespace rendu
         }
 
         const int kSecondsPerDay = 24 * 60 * 60;
-    } // namespace time
 
 } // namespace rendu
 
-#endif //RENDU_TIME_DATE_H
+#endif //RENDU_DATE_H

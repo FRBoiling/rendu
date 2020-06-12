@@ -2,10 +2,10 @@
 // Created by boil on 18-10-7.
 //
 
-#ifndef RENDU_COMMON_SINGLETON_H
-#define RENDU_COMMON_SINGLETON_H
+#ifndef RENDU_BASW_SINGLETON_H
+#define RENDU_BASW_SINGLETON_H
 
-#include <rendu/common/noncopyable.h>
+#include "noncopyable.h"
 #include <pthread.h>
 
 namespace rendu
@@ -78,4 +78,4 @@ namespace rendu
 
 } // namespace rendu
 
-#endif //RENDU_COMMON_SINGLETON_H
+#endif //RENDU_BASW_SINGLETON_H

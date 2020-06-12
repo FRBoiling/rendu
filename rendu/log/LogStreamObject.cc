@@ -4,7 +4,6 @@
 #include "LogStreamObject.h"
 #include <assert.h>
 
-using namespace rendu::log;
 
 
 

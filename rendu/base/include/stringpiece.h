@@ -2,17 +2,14 @@
 // 对于提供允许客户端轻松传入“const char*”或“string”的接口很有用。
 // I wish C++ literals were automatically of type "string".
 
-#ifndef RENDU_COMMON_STRINGPIECE_H
-#define RENDU_COMMON_STRINGPIECE_H
+#ifndef RENDU_STRINGPIECE_H
+#define RENDU_STRINGPIECE_H
 
-#include <string.h>
-#include <iosfwd> // for ostream forward-declaration
 #include "types.h"
+#include <iosfwd> // for ostream forward-declaration
 
 namespace rendu
 {
-
-    using namespace std;
 
     //用于将C样式的字符串参数传递给函数。
     class StringArg // copyable
@@ -21,7 +18,7 @@ namespace rendu
         StringArg(const char *str)
             : str_(str) {}
 
-        StringArg(const string& str)
+        StringArg(const std::string& str)
             : str_(str.c_str()) {}
 
         const char *c_str() const { return str_; }
@@ -186,4 +183,4 @@ struct __type_traits<rendu::StringPiece>
 // allow StringPiece to be logged
 std::ostream &operator<<(std::ostream &o, const rendu::StringPiece &piece);
 
-#endif //RENDU_COMMON_STRINGPIECE_H
+#endif //RENDU_STRINGPIECE_H

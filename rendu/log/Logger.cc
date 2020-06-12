@@ -21,9 +21,9 @@ namespace rendu
 
         Logger::LogLevel initLogLevel()
         {
-            if (::getenv("MUDUO_LOG_TRACE"))
+            if (::getenv("MUDUO_TRACE"))
                 return log::Logger::TRACE;
-            else if (::getenv("MUDUO_LOG_DEBUG"))
+            else if (::getenv("MUDUO_DEBUG"))
                 return log::Logger::DEBUG;
             else
                 return log::Logger::INFO;
@@ -31,7 +31,7 @@ namespace rendu
 
         Logger::LogLevel g_logLevel = initLogLevel();
 
-        const char *LogLevelName[log::Logger::NUM_LOG_LEVELS] =
+        const char *LogLevelName[log::Logger::NUM_LEVELS] =
             {
                 "TRACE ",
                 "DEBUG ",
@@ -88,8 +88,6 @@ namespace rendu
 } // namespace rendutime
 
 using namespace rendu;
-using namespace rendu::log;
-using namespace rendu::time;
 
 Logger::Impl::Impl(LogLevel level, int savedErrno, const SourceFile &file, int line)
     : time_(time::Timestamp::now()),

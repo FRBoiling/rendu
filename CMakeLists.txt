@@ -1,8 +1,25 @@
-# 指定cmake最低编译版本
-cmake_minimum_required(VERSION 2.6)
-# 指定工程的名称
-project(rendu C CXX)
-# set(CMAKE_CXX_STANDARD 14)
+cmake_minimum_required(VERSION 2.8)     #指定cmake最低编译版本
+project(rendu C CXX) # 指定工程的名称
+
+# The version number.
+set(VERSION_MAJOR 1)
+set(VERSION_MINOR 0)
+
+# configure a header file to pass some of the CMake settings to the source code
+configure_file(
+        "${PROJECT_SOURCE_DIR}/rendu_config.h.in"
+        "${PROJECT_BINARY_DIR}/rendu_config.h"
+)
+# add the binary tree to the search path for include files so that we will find config.h
+include_directories(${PROJECT_BINARY_DIR})
+include_directories(${PROJECT_SOURCE_DIR})
+
+option(USE_JEMALLOC "use jemalloc" ON)
+option(USE_TCMALLOC "use tcmalloc" OFF)
+option(RENDU_STD_STRING "rendu std string" ON)
+option(RENDU_TRACE "rendu init loglevel trace " ON)
+option(RENDU_DEBUG "rendu init loglevel debug " ON)
+option(CHECK_PTHREAD_RETURN_VALUE "rendu check thread return value " ON)
 
 enable_testing()
 
@@ -10,32 +27,7 @@ if (NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Relase")
 endif ()
 
-# The version number.
-set(VERSION_MAJOR 1)
-set(VERSION_MINOR 0)
 
-# set(CXX_FLAGS
-#         -g
-#         #        -DVALGRIND
-#         #        -DUSE_JEMALLOC
-#         -DRENDU_STD_STRING
-#         -DCHECK_PTHREAD_RETURN_VALUE
-#         -D_FILE_OFFSET_BITS=64
-#         -Wall
-#         -Wextra
-#         -Werror
-#         -Wconversion
-#         -Wno-unused-parameter
-#         -Wold-style-cast
-#         -Woverloaded-virtual
-#         -Wpointer-arith
-#         -Wshadow
-#         -Wwrite-strings
-#         -march=native
-#         # -MMD
-#         # -std=c++0x
-#         -rdynamic
-#         )
 set(CXX_FLAGS
  -g
  # -DVALGRIND
@@ -57,20 +49,8 @@ set(CXX_FLAGS
  -rdynamic
  )
 
-# configure a header file to pass some of the CMake settings to the source code
-configure_file(
-        "${PROJECT_SOURCE_DIR}/rendu_config.h.in"
-        "${PROJECT_BINARY_DIR}/rendu_config.h"
-)
-# add the binary tree to the search path for include files so that we will find config.h
-include_directories("${PROJECT_BINARY_DIR}")
-
-option(USE_JEMALLOC "use jemalloc" ON)
-#option(USE_TCMALLOC "use tcmalloc" OFF)
-option(RENDU_STD_STRING "rendu std string" ON)
-option(RENDU_LOG_TRACE "rendu init loglevel trace " ON)
-option(RENDU_LOG_DEBUG "rendu init loglevel debug " ON)
-option(CHECK_PTHREAD_RETURN_VALUE "rendu check thread return value " ON)
+ string(TOUPPER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
+ message(STATUS "CXX_FLAGS = " ${CMAKE_CXX_FLAGS} " " ${CMAKE_CXX_FLAGS_${BUILD_TYPE}})
 
 if(CMAKE_BUILD_BITS EQUAL 32)
   list(APPEND CXX_FLAGS "-m32")
@@ -86,8 +66,8 @@ string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 
 set(CMAKE_CXX_FLAGS_DEBUG "-O0")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 
 find_package(Boost REQUIRED)
 find_package(Protobuf)
@@ -109,8 +89,6 @@ find_library(GD_LIBRARY NAMES gd)
 find_program(THRIFT_COMPILER thrift)
 find_path(THRIFT_INCLUDE_DIR thrift)
 find_library(THRIFT_LIBRARY NAMES thrift)
-
-
 
 
 if(CARES_INCLUDE_DIR AND CARES_LIBRARY)
@@ -138,17 +116,16 @@ if(THRIFT_COMPILER AND THRIFT_INCLUDE_DIR AND THRIFT_LIBRARY)
   message(STATUS "found thrift")
 endif()
 
+
 include_directories(${Boost_INCLUDE_DIRS})
 
-include_directories(${PROJECT_SOURCE_DIR})
 
-string(TOUPPER ${CMAKE_BUILD_TYPE} BUILD_TYPE)
-message(STATUS "CXX_FLAGS = " ${CMAKE_CXX_FLAGS} " " ${CMAKE_CXX_FLAGS_${BUILD_TYPE}})
-
-
-add_subdirectory(rendu/zmalloc)
-add_subdirectory(rendu/net)
-add_subdirectory(examples)
+# #查找当前目录下的所有源文件将名称保存到 DIR_SRCS 变量
+# aux_source_directory(. DIR_SRCS)
+# #指定生成目标
+# add_library(rendu_lib ${DIR_SRCS})
+# add_subdirectory(examples)
+ add_subdirectory(rendu/base)
 
 #if (NOT CMAKE_BUILD_NO_EXAMPLES)
     #    add_subdirectory(rendu/tests)
@@ -157,4 +134,4 @@ add_subdirectory(examples)
     #    add_subdirectory(examples)
 #endif ()
 
-#add_library(rendu SHARED .)
+# add_library(rendu SHARED .)

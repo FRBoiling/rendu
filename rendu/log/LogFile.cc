@@ -7,8 +7,6 @@
 #include <rendu/time/Timestamp.h>
 
 using namespace rendu;
-using namespace rendu::log;
-using namespace rendu::util;
 
 LogFile::LogFile(const string &basename,
                  off_t rollSize,

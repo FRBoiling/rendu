@@ -2,8 +2,8 @@
 // Created by boil on 18-10-8.
 //
 
-#ifndef RENDU_LOGFILE_H
-#define RENDU_LOGFILE_H
+#ifndef RENDUFILE_H
+#define RENDUFILE_H
 
 #include "rendu/common/noncopyable.h"
 #include <memory>
@@ -12,7 +12,6 @@
 #include <rendu/common/Types.h>
 
 namespace rendu{
-    namespace log{
         class LogFile : noncopyable
         {
         public:
@@ -48,8 +47,7 @@ namespace rendu{
             const static int kRollPerSeconds_ = 60*60*24;
         };
 
-    }
 }
 
 
-#endif //RENDU_LOGFILE_H
+#endif //RENDUFILE_H

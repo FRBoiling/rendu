@@ -2,16 +2,14 @@
 // Created by boil on 18-10-9.
 //
 
-#ifndef RENDU_LOG_EXCEPTION_H
-#define RENDU_LOG_EXCEPTION_H
+#ifndef RENDU_EXCEPTION_H
+#define RENDU_EXCEPTION_H
 
 #include "rendu/common/types.h"
 #include <exception>
 
 namespace rendu
 {
-    namespace log
-    {
         class Exception : public std::exception
         {
         public:
@@ -35,8 +33,7 @@ namespace rendu
             string stack_;
         };
 
-    } // namespace log
 
 } // namespace rendu
 
-#endif // RENDU_LOG_EXCEPTION_H
+#endif // RENDU_EXCEPTION_H

@@ -5,9 +5,7 @@
 #ifndef RENDU_PROCESSINFO_H
 #define RENDU_PROCESSINFO_H
 
-#include "types.h"
-#include "StringPiece.h"
-#include <rendu/time/Timestamp.h>
+
 #include <vector>
 
 namespace rendu {

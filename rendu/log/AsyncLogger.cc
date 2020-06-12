@@ -6,8 +6,6 @@
 #include "LogFile.h"
 #include "rendu/time/Timestamp.h"
 
-using namespace rendu::log;
-
 AsyncLogger::AsyncLogger(const string &basename,
                          off_t rollSize,
                          int flushInterval)

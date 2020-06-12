@@ -1,16 +1,13 @@
 //
 // Created by boil on 20-4-24.
 //
-#ifndef RENDU_TIMERQUEUE_H
-#define RENDU_TIMERQUEUE_H
+#ifndef RENDURQUEUE_H
+#define RENDURQUEUE_H
 
 #include <set>
 #include <vector>
 
-#include "EventLoop.h"
-
 namespace rendu{
-    namespace net{
         class EventLoop;
         class Timer;
         class TimerId;
@@ -72,8 +69,7 @@ namespace rendu{
             bool callingExpiredTimers_; /* atomic */
             ActiveTimerSet cancelingTimers_;
         };
-    }
 }
 
-#endif //RENDU_TIMERQUEUE_H
+#endif //RENDURQUEUE_H
 

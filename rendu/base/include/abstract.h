@@ -2,8 +2,8 @@
 // Created by boil on 18-8-23.
 //
 
-#ifndef RENDU_COMMON_ABSTRACT_H
-#define RENDU_COMMON_ABSTRACT_H
+#ifndef RENDU_ABSTRACT_H
+#define RENDU_ABSTRACT_H
 
 namespace rendu
 {
@@ -13,4 +13,4 @@ namespace rendu
 
 } // namespace rendu
 
-#endif //RENDU_COMMON_ABSTRACT_H
+#endif //RENDU_ABSTRACT_H

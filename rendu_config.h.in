@@ -14,8 +14,8 @@
 #cmakedefine RENDU_STD_STRING
 
 //log
-#cmakedefine RENDU_LOG_TRACE
-#cmakedefine RENDU_LOG_DEBUG
+#cmakedefine RENDU_TRACE
+#cmakedefine RENDU_DEBUG
 
 //thread
 #cmakedefine CHECK_PTHREAD_RETURN_VALUE

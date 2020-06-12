@@ -10,9 +10,6 @@
 #include <pwd.h>
 #include <sys/times.h>
 
-#include <rendu/thread/CurrentThread.h>
-#include <rendu/util/FileUtil.h>
-
 namespace rendu {
     __thread int t_numOpenedFiles = 0;
 
