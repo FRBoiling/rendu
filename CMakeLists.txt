@@ -10,12 +10,9 @@ configure_file(
         "${PROJECT_SOURCE_DIR}/rendu_config.h.in"
         "${PROJECT_BINARY_DIR}/rendu_config.h"
 )
-# add the binary tree to the search path for include files so that we will find config.h
-include_directories(${PROJECT_BINARY_DIR})
-include_directories(${PROJECT_SOURCE_DIR})
 
-option(USE_JEMALLOC "use jemalloc" ON)
-option(USE_TCMALLOC "use tcmalloc" OFF)
+option(USE_JEMALLOC "use jemalloc" OFF)
+option(USE_TCMALLOC "use tcmalloc" ON)
 option(RENDU_STD_STRING "rendu std string" ON)
 option(RENDU_TRACE "rendu init loglevel trace " ON)
 option(RENDU_DEBUG "rendu init loglevel debug " ON)
@@ -116,8 +113,11 @@ if(THRIFT_COMPILER AND THRIFT_INCLUDE_DIR AND THRIFT_LIBRARY)
   message(STATUS "found thrift")
 endif()
 
-
 include_directories(${Boost_INCLUDE_DIRS})
+# add the binary tree to the search path for include files so that we will find config.h
+include_directories(${PROJECT_BINARY_DIR})
+include_directories(${PROJECT_SOURCE_DIR})
+
 
 
 # #查找当前目录下的所有源文件将名称保存到 DIR_SRCS 变量
@@ -125,7 +125,8 @@ include_directories(${Boost_INCLUDE_DIRS})
 # #指定生成目标
 # add_library(rendu_lib ${DIR_SRCS})
 # add_subdirectory(examples)
- add_subdirectory(rendu/base)
+
+add_subdirectory(rendu/base)
 
 #if (NOT CMAKE_BUILD_NO_EXAMPLES)
     #    add_subdirectory(rendu/tests)
@@ -134,4 +135,4 @@ include_directories(${Boost_INCLUDE_DIRS})
     #    add_subdirectory(examples)
 #endif ()
 
-# add_library(rendu SHARED .)
+# add_library(rendu SHARED ./rendu)

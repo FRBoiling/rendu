@@ -1,0 +1,77 @@
+[
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/AsyncLogger.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/AsyncLogger.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/Condition.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/Condition.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/Condition.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/CountDownLatch.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/CountDownLatch.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/CountDownLatch.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/CurrentThread.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/CurrentThread.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/CurrentThread.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/Date.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/Date.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/Date.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/Exception.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/Exception.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/Exception.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/FileUtil.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/FileUtil.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/FileUtil.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/LogFile.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/LogFile.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/LogFile.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/LogStream.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/LogStream.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/LogStream.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/Logger.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/Logger.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/Logger.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/ProcessInfo.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/ProcessInfo.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/ProcessInfo.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/Thread.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/Thread.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/Thread.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/ThreadPool.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/ThreadPool.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/TimeZone.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/TimeZone.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/TimeZone.cc"
+},
+{
+  "directory": "/home/boil/GithubRepository/rendu/build/rendu/base",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/boil/GithubRepository/rendu/build -I/home/boil/GithubRepository/rendu  -g -DCHECK_PTHREAD_RETURN_VALUE -D_FILE_OFFSET_BITS=64 -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter -Wold-style-cast -Woverloaded-virtual -Wpointer-arith -Wshadow -Wwrite-strings -march=native -std=c++11 -rdynamic -O0   -o CMakeFiles/rendu_base.dir/sources/Timestamp.cc.o -c /home/boil/GithubRepository/rendu/rendu/base/sources/Timestamp.cc",
+  "file": "/home/boil/GithubRepository/rendu/rendu/base/sources/Timestamp.cc"
+}
+]
