@@ -2,17 +2,18 @@
 // Created by boil on 18-10-7.
 //
 
-#include "ThreadPool.h"
+#include "../includes/ThreadPool.h"
+#include "../includes/Exception.h"
 
-using namespace rendu::thread;
+using namespace rendu;
 
-ThreadPool::ThreadPool(const string& nameArg)
-        : mutex_(),
-          notEmpty_(mutex_),
-          notFull_(mutex_),
-          name_(nameArg),
-          maxQueueSize_(0),
-          running_(false)
+ThreadPool::ThreadPool(const string &nameArg)
+    : mutex_(),
+      notEmpty_(mutex_),
+      notFull_(mutex_),
+      name_(nameArg),
+      maxQueueSize_(0),
+      running_(false)
 {
 }
 
@@ -32,10 +33,10 @@ void ThreadPool::start(int numThreads)
     for (int i = 0; i < numThreads; ++i)
     {
         char id[32];
-        snprintf(id, sizeof id, "%d", i+1);
-        threads_.push_back(new Thread(
-                std::bind(&ThreadPool::runInThread, this), name_+id));
-        threads_[i].start();
+        snprintf(id, sizeof id, "%d", i + 1);
+        threads_.emplace_back(new rendu::Thread(
+            std::bind(&ThreadPool::runInThread, this), name_ + id));
+        threads_[i]->start();
     }
     if (numThreads == 0 && threadInitCallback_)
     {
@@ -49,13 +50,13 @@ void ThreadPool::stop()
         MutexLockGuard lock(mutex_);
         running_ = false;
         notEmpty_.notifyAll();
+        notFull_.notifyAll();
     }
-    for_each(threads_.begin(),
-             threads_.end(),
-//             std::bind(&Thread::join,std::placeholders::_1));
-           std::bind(&Thread::join,std::placeholders::_1));
+    for (auto &thr : threads_)
+    {
+        thr->join();
+    }
 }
-
 
 size_t ThreadPool::queueSize() const
 {
@@ -63,7 +64,7 @@ size_t ThreadPool::queueSize() const
     return queue_.size();
 }
 
-void ThreadPool::run(const Task& task)
+void ThreadPool::run(Task task)
 {
     if (threads_.empty())
     {
@@ -72,38 +73,18 @@ void ThreadPool::run(const Task& task)
     else
     {
         MutexLockGuard lock(mutex_);
-        while (isFull())
+        while (isFull() && running_)
         {
             notFull_.wait();
         }
-        assert(!isFull());
-
-        queue_.push_back(task);
-        notEmpty_.notify();
-    }
-}
-
-#ifdef __GXX_EXPERIMENTAL_CXX0X__
-void ThreadPool::run(Task&& task)
-{
-    if (threads_.empty())
-    {
-        task();
-    }
-    else
-    {
-        MutexLockGuard lock(mutex_);
-        while (isFull())
-        {
-            notFull_.wait();
-        }
+        if (!running_)
+            return;
         assert(!isFull());
 
         queue_.push_back(std::move(task));
         notEmpty_.notify();
     }
 }
-#endif
 
 ThreadPool::Task ThreadPool::take()
 {
@@ -132,30 +113,38 @@ bool ThreadPool::isFull() const
     return maxQueueSize_ > 0 && queue_.size() >= maxQueueSize_;
 }
 
-void ThreadPool::runInThread() {
-    try {
-        if (threadInitCallback_) {
+void ThreadPool::runInThread()
+{
+    try
+    {
+        if (threadInitCallback_)
+        {
             threadInitCallback_();
         }
-        while (running_) {
+        while (running_)
+        {
             Task task(take());
-            if (task) {
+            if (task)
+            {
                 task();
             }
         }
     }
-    catch (const Exception &ex) {
+    catch (const Exception &ex)
+    {
         fprintf(stderr, "exception caught in ThreadPool %s\n", name_.c_str());
         fprintf(stderr, "reason: %s\n", ex.what());
         fprintf(stderr, "stack trace: %s\n", ex.stackTrace());
         abort();
     }
-    catch (const std::exception &ex) {
+    catch (const std::exception &ex)
+    {
         fprintf(stderr, "exception caught in ThreadPool %s\n", name_.c_str());
         fprintf(stderr, "reason: %s\n", ex.what());
         abort();
     }
-    catch (...) {
+    catch (...)
+    {
         fprintf(stderr, "unknown exception caught in ThreadPool %s\n", name_.c_str());
         throw; // rethrow
     }

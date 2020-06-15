@@ -98,15 +98,15 @@ namespace rendu
 
         // uncomment if you need copying and assignment
         //
-        // AtomicIntegerT(const AtomicIntegerT& that)
+        // AtomicBooleanT(const AtomicBooleanT& that)
         //   : value_(that.get())
         // {}
         //
-        // AtomicIntegerT& operator=(const AtomicIntegerT& that)
-        // {
-        //   getAndSet(that.get());
-        //   return *this;
-        // }
+        AtomicBooleanT& operator=(const AtomicBooleanT& that)
+        {
+          getAndSet(that.get());
+          return *this;
+        }
 
         T get()
         {

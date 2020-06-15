@@ -9,19 +9,20 @@
 #include "Noncopyable.h"
 #include "Thread.h"
 #include "LogStream.h"
+#include "Atomic.h"
 
 #include <vector>
 
 namespace rendu
 {
-    class AsyncLogging : Noncopyable
+    class AsyncLogger : Noncopyable
     {
     public:
-        AsyncLogging(const string &basename,
+        AsyncLogger(const string &basename,
                      off_t rollSize,
                      int flushInterval = 3);
 
-        ~AsyncLogging()
+        ~AsyncLogger()
         {
             if (running_.get())
             {

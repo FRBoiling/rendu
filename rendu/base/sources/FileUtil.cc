@@ -167,11 +167,6 @@ int FileUtil::ReadSmallFile::readToBuffer(int *size)
     return err;
 }
 
-template int FileUtil::readFile(StringArg filename,
-                                int maxSize,
-                                string *content,
-                                int64_t *, int64_t *, int64_t *);
-
 template int FileUtil::ReadSmallFile::readToString(int maxSize,
                                                    string *content,
                                                    int64_t *, int64_t *, int64_t *);

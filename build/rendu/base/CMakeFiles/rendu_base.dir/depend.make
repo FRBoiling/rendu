@@ -4,6 +4,7 @@
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/AsyncLogger.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/Atomic.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/Condition.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/Copyable.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/CountDownLatch.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/CurrentThread.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/FileUtil.h
@@ -13,6 +14,7 @@ rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/inc
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/Noncopyable.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/StringPiece.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/Thread.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/Timestamp.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/includes/Types.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/AsyncLogger.cc.o: ../rendu/base/sources/AsyncLogger.cc
 
@@ -112,6 +114,16 @@ rendu/base/CMakeFiles/rendu_base.dir/sources/Thread.cc.o: ../rendu/base/includes
 rendu/base/CMakeFiles/rendu_base.dir/sources/Thread.cc.o: ../rendu/base/includes/Types.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/Thread.cc.o: ../rendu/base/sources/Thread.cc
 
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/Atomic.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/Condition.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/CountDownLatch.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/CurrentThread.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/Exception.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/Mutex.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/Noncopyable.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/Thread.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/ThreadPool.h
+rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/includes/Types.h
 rendu/base/CMakeFiles/rendu_base.dir/sources/ThreadPool.cc.o: ../rendu/base/sources/ThreadPool.cc
 
 rendu/base/CMakeFiles/rendu_base.dir/sources/TimeZone.cc.o: ../rendu/base/includes/Copyable.h
