@@ -72,7 +72,8 @@ namespace rendu
             latch_->countDown();
             latch_ = NULL;
 
-            CurrentThread::t_threadName = name_.empty() ? "muduoThread" : name_.c_str();
+            CurrentThread::t_threadName = name_.empty() ? "
+            Thread" : name_.c_str();
             ::prctl(PR_SET_NAME, CurrentThread::t_threadName);
             try
             {

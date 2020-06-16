@@ -23,10 +23,10 @@ namespace rendu
     }
 
     Logger::LogLevel initLogLevel()
-    {
-        if (::getenv("MUDUO_TRACE"))
+    {RENDU
+        if (::getenv("RENDU_TRACE"))
             return Logger::TRACE;
-        else if (::getenv("MUDUO_DEBUG"))
+        else if (::getenv("RENDU_TRACE"))
             return Logger::DEBUG;
         else
             return Logger::INFO;
