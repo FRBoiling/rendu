@@ -6,8 +6,8 @@
 #define RENDU_NET_INETADDRESS_H
 
 
-#include <rendu/common/copyable.h>
-#include <rendu/common/StringPiece.h>
+#include <Copyable.h>
+#include <StringPiece.h>
 #include <netinet/in.h>
 
 namespace rendu

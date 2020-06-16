@@ -6,8 +6,8 @@
 #define RENDU_BUFFER_H
 
 
-#include "rendu/common/copyable.h"
-#include "rendu/common/types.h"
+#include <rendu/common/Copyable.h>
+#include "rendu/common/Types.h"
 #include "rendu/common/StringPiece.h"
 #include <algorithm>
 #include <vector>

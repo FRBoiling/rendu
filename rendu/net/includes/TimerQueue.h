@@ -4,8 +4,8 @@
 #ifndef RENDU_TIMERQUEUE_H
 #define RENDU_TIMERQUEUE_H
 
-#include "Noncopyable.h"
-#include "Timestamp.h"
+#include <Noncopyable.h>
+#include <Timestamp.h>
 #include <set>
 #include <vector>
 

@@ -15,10 +15,10 @@
 #include <boost/any.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#include <rendu/common/noncopyable.h>
-#include <rendu/time/Timestamp.h>
-#include <rendu/thread/CurrentThread.h>
-#include <rendu/thread/Mutex.h>
+#include <Noncopyable.h>
+#include <Timestamp.h>
+#include <CurrentThread.h>
+#include <Mutex.h>
 
 #include "TimerId.h"
 

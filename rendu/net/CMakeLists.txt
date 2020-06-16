@@ -39,7 +39,7 @@ aux_source_directory(. DIR_NET)
 # 生成链接库
 #add_library (rendu_net ${net_SRCS})
 add_library (rendu_net ${NET_SRCS})
-# target_link_libraries(rendu_net rendu_common)
+target_link_libraries(rendu_net rendu_base)
 # target_link_libraries(rendu_net rendu_time)
 # target_link_libraries(rendu_net rendu_log)
 # target_link_libraries(rendu_net rendu_thread)

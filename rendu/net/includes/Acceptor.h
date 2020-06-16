@@ -7,7 +7,7 @@
 
 
 #include <boost/function.hpp>
-#include <rendu/common/noncopyable.h>
+#include <Noncopyable.h>
 #include "SocketsOps.h"
 #include "InetAddress.h"
 #include "EventLoop.h"

@@ -2,16 +2,12 @@
 // Created by boil on 20-4-21.
 //
 
-#include "Channel.h"
-#include <sys/poll.h>
-#include <rendu/log/Logger.h>
-#include <rendu/net/EventLoop.h>
+#include "../includes/Channel.h"
 
+#include <sys/poll.h>
 #include <sstream>
 
 using namespace rendu;
-using namespace rendu::net;
-using namespace rendu::log;
 
 const int Channel::kNoneEvent = 0;
 const int Channel::kReadEvent = POLLIN | POLLPRI;
