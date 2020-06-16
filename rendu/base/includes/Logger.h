@@ -124,21 +124,21 @@ namespace rendu
 //   else
 //     logWarnStream << "Bad news";
 //
-#define LOG_TRACE                    \
-    if (Logger::logLevel() <= TRACE) \
-    Logger(__FILE__, __LINE__, TRACE, __func__).stream()
-#define LOG_DEBUG                    \
-    if (Logger::logLevel() <= DEBUG) \
-    Logger(__FILE__, __LINE__, DEBUG, __func__).stream()
-#define LOG_INFO                    \
-    if (Logger::logLevel() <= INFO) \
-    Logger(__FILE__, __LINE__).stream()
+#define LOG_TRACE                                          \
+    if (rendu::Logger::logLevel() <= rendu::Logger::TRACE) \
+    rendu::Logger(__FILE__, __LINE__, rendu::Logger::TRACE, __func__).stream()
+#define LOG_DEBUG                                          \
+    if (rendu::Logger::logLevel() <= rendu::Logger::DEBUG) \
+    rendu::Logger(__FILE__, __LINE__, rendu::Logger::DEBUG, __func__).stream()
+#define LOG_INFO                                          \
+    if (rendu::Logger::logLevel() <= rendu::Logger::INFO) \
+    rendu::Logger(__FILE__, __LINE__).stream()
 
-#define LOG_WARN Logger(__FILE__, __LINE__, WARN).stream()
-#define LOG_ERROR Logger(__FILE__, __LINE__, ERROR).stream()
-#define LOG_FATAL Logger(__FILE__, __LINE__, FATAL).stream()
-#define LOG_SYSERR Logger(__FILE__, __LINE__, false).stream()
-#define LOG_SYSFATAL Logger(__FILE__, __LINE__, true).stream()
+#define LOG_WARN rendu::Logger(__FILE__, __LINE__, rendu::Logger::WARN).stream()
+#define LOG_ERROR rendu::Logger(__FILE__, __LINE__, rendu::Logger::ERROR).stream()
+#define LOG_FATAL rendu::Logger(__FILE__, __LINE__, rendu::Logger::FATAL).stream()
+#define LOG_SYSERR rendu::Logger(__FILE__, __LINE__, false).stream()
+#define LOG_SYSFATAL rendu::Logger(__FILE__, __LINE__, true).stream()
 
     const char *strerror_tl(int savedErrno);
 

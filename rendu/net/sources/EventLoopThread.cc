@@ -2,8 +2,8 @@
 // Created by boil on 20-4-24.
 //
 
-#include "EventLoopThread.h"
-#include <boost/bind.hpp>
+#include "../includes/EventLoopThread.h"
+#include "../includes/EventLoop.h"
 
 using namespace rendu::net;
 
@@ -11,7 +11,7 @@ EventLoopThread::EventLoopThread(const ThreadInitCallback& cb,
                                  const string& name)
         : loop_(NULL),
           exiting_(false),
-          thread_(boost::bind(&EventLoopThread::threadFunc, this), name),
+          thread_(std::bind(&EventLoopThread::threadFunc, this), name),
           mutex_(),
           cond_(mutex_),
           callback_(cb)

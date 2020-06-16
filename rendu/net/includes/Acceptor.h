@@ -2,27 +2,30 @@
 // Created by boil on 20-4-17.
 //
 
-#ifndef RENDU_ACCEPTOR_H
-#define RENDU_ACCEPTOR_H
-
+#ifndef RENDU_NET_ACCEPTOR_H
+#define RENDU_NET_ACCEPTOR_H
 
 #include <boost/function.hpp>
-#include <Noncopyable.h>
+#include "rendu/base/rendu_base.h"
 #include "SocketsOps.h"
 #include "InetAddress.h"
 #include "EventLoop.h"
 #include "Channel.h"
 #include "Socket.h"
 
-namespace rendu {
-    namespace net {
-///
-/// Acceptor of incoming TCP connections.
-///
-        class Acceptor : rendu::noncopyable {
+namespace rendu
+{
+    namespace net
+    {
+        ///
+        /// Acceptor of incoming TCP connections.
+        ///
+        class Acceptor : Noncopyable
+        {
         public:
             typedef boost::function<void(int sockfd,
-                                         const InetAddress &)> NewConnectionCallback;
+                                         const InetAddress &)>
+                NewConnectionCallback;
 
             Acceptor(EventLoop *loop, const InetAddress &listenAddr, bool reuseport);
 
@@ -45,8 +48,7 @@ namespace rendu {
             int idleFd_;
         };
 
-    }
-}
+    } // namespace net
+} // namespace rendu
 
-
-#endif //RENDU_ACCEPTOR_H
+#endif //RENDU_NET_ACCEPTOR_H

@@ -2,13 +2,13 @@
 // Created by boil on 18-10-3.
 //
 
-#include "InetAddress.h"
-#include "Endian.h"
-#include "SocketsOps.h"
+#include "../includes/InetAddress.h"
+#include "../includes/Endian.h"
+#include "../includes/SocketsOps.h"
 #include <netdb.h>
 
 #include <boost/static_assert.hpp>
-#include <rendu/log/Logger.h>
+#include "rendu/base/rendu_base.h"
 
 // INADDR_ANY use (type)value casting.
 #pragma GCC diagnostic ignored "-Wold-style-cast"
@@ -18,7 +18,6 @@ static const in_addr_t kInaddrLoopback = INADDR_LOOPBACK;
 
 using namespace rendu;
 using namespace rendu::net;
-using namespace rendu::log;
 
 BOOST_STATIC_ASSERT(sizeof(InetAddress) == sizeof(struct sockaddr_in6));
 BOOST_STATIC_ASSERT(offsetof(sockaddr_in, sin_family) == 0);

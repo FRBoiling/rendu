@@ -3,12 +3,12 @@
 //
 
 #include <netinet/tcp.h>
-#include <rendu/log/Logger.h>
-#include "Socket.h"
-#include "SocketsOps.h"
+#include "../includes/Socket.h"
+#include "../includes/SocketsOps.h"
+
+#include "rendu/base/rendu_base.h"
 
 using namespace rendu::net;
-using namespace rendu::log;
 
 Socket::~Socket()
 {

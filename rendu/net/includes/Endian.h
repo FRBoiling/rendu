@@ -2,8 +2,8 @@
 // Created by boil on 20-4-14.
 //
 
-#ifndef RENDU_ENDIAN_H
-#define RENDU_ENDIAN_H
+#ifndef RENDU_NET_ENDIAN_H
+#define RENDU_NET_ENDIAN_H
 
 #include <endian.h>
 #include <stdint.h>
@@ -17,7 +17,7 @@ namespace rendu
 
 // the inline assembler code makes type blur,
 // so we disable warnings for a while.
-#if defined(__clang__) || __GNUC_PREREQ (4,6)
+#if defined(__clang__) || __GNUC_PREREQ(4, 6)
 #pragma GCC diagnostic push
 #endif
 #pragma GCC diagnostic ignored "-Wconversion"
@@ -51,14 +51,14 @@ namespace rendu
             {
                 return be16toh(net16);
             }
-#if defined(__clang__) || __GNUC_PREREQ (4,6)
+#if defined(__clang__) || __GNUC_PREREQ(4, 6)
 #pragma GCC diagnostic pop
 #else
 #pragma GCC diagnostic warning "-Wconversion"
 #pragma GCC diagnostic warning "-Wold-style-cast"
 #endif
-        }
-    }
-}
+        } // namespace sockets
+    }     // namespace net
+} // namespace rendu
 
-#endif //RENDU_ENDIAN_H
+#endif //RENDU_NET_ENDIAN_H

@@ -27,10 +27,13 @@
 #        TimerQueue.cc
 #        )
 
-FILE (GLOB NET_SOURCES "*.cc" "*.c" "./poller/*.cc" )
-FILE (GLOB NET_INCLUDES "*.h" "*.h" "./poller/*.h"  "./AFolder/*.h" )
+# FILE (GLOB NET_SOURCES "*.cc" "*.c" "./poller/*.cc" )
+# FILE (GLOB NET_INCLUDES "*.h" "*.h" "./poller/*.h"  "./AFolder/*.h" )
 
-SET (NET_SRCS
+FILE(GLOB NET_SOURCES "sources/*.cc") 
+FILE(GLOB NET_INCLUDES "includes/*.h" "*.h") 
+
+SET (DIR_NET
         ${NET_SOURCES}
         ${NET_INCLUDES}
         )
@@ -38,7 +41,7 @@ SET (NET_SRCS
 aux_source_directory(. DIR_NET)
 # 生成链接库
 #add_library (rendu_net ${net_SRCS})
-add_library (rendu_net ${NET_SRCS})
+add_library (rendu_net ${DIR_NET})
 target_link_libraries(rendu_net rendu_base)
 # target_link_libraries(rendu_net rendu_time)
 # target_link_libraries(rendu_net rendu_log)

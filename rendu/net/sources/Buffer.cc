@@ -2,8 +2,8 @@
 // Created by boil on 20-4-17.
 //
 
-#include "Buffer.h"
-#include "SocketsOps.h"
+#include "../includes/Buffer.h"
+#include "../includes/SocketsOps.h"
 
 using namespace rendu;
 using namespace rendu::net;

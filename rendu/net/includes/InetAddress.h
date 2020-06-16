@@ -6,8 +6,8 @@
 #define RENDU_NET_INETADDRESS_H
 
 
-#include <Copyable.h>
-#include <StringPiece.h>
+
+#include "rendu/base/rendu_base.h"
 #include <netinet/in.h>
 
 namespace rendu
@@ -23,7 +23,7 @@ namespace rendu
 /// Wrapper of sockaddr_in.
 ///
 /// This is an POD interface class.
-        class InetAddress : public rendu::copyable
+        class InetAddress : public Copyable
         {
         public:
             /// Constructs an endpoint with given port number.

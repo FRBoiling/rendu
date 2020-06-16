@@ -2,17 +2,16 @@
 // Created by boil on 20-4-25.
 //
 
-#include "TcpClient.h"
+#include "../includes/TcpClient.h"
+#include "../includes/TcpConnection.h"
+#include "../includes/Connector.h"
+#include "../includes/SocketsOps.h"
 
-#include <boost/bind.hpp>
-#include <rendu/log/Logger.h>
-#include <rendu/net/SocketsOps.h>
-#include "Callbacks.h"
-#include "TcpConnection.h"
-#include "Connector.h"
+#include "rendu/base/rendu_base.h"
+
+#include <functional>
 
 using namespace rendu;
-using namespace rendu::log;
 using namespace rendu::net;
 
 // TcpClient::TcpClient(EventLoop* loop)
@@ -35,7 +34,7 @@ namespace rendu
 
             void removeConnection(EventLoop* loop, const TcpConnectionPtr& conn)
             {
-                loop->queueInLoop(boost::bind(&TcpConnection::connectDestroyed, conn));
+                loop->queueInLoop(std::bind(&TcpConnection::connectDestroyed, conn));
             }
 
             void removeConnector(const ConnectorPtr& connector)
@@ -60,7 +59,7 @@ TcpClient::TcpClient(EventLoop* loop,
           nextConnId_(1)
 {
     connector_->setNewConnectionCallback(
-            boost::bind(&TcpClient::newConnection, this, _1));
+      std::bind(&TcpClient::newConnection, this, _1));
     // FIXME setConnectFailedCallback
     LOG_INFO << "TcpClient::TcpClient[" << name_
              << "] - connector " << get_pointer(connector_);
@@ -81,9 +80,9 @@ TcpClient::~TcpClient()
     {
         assert(loop_ == conn->getLoop());
         // FIXME: not 100% safe, if we are in different thread
-        CloseCallback cb = boost::bind(&detail::removeConnection, loop_, _1);
+        CloseCallback cb = std::bind(&detail::removeConnection, loop_, _1);
         loop_->runInLoop(
-                boost::bind(&TcpConnection::setCloseCallback, conn, cb));
+                std::bind(&TcpConnection::setCloseCallback, conn, cb));
         if (unique)
         {
             conn->forceClose();
@@ -93,7 +92,7 @@ TcpClient::~TcpClient()
     {
         connector_->stop();
         // FIXME: HACK
-        loop_->runAfter(1, boost::bind(&detail::removeConnector, connector_));
+        loop_->runAfter(1, std::bind(&detail::removeConnector, connector_));
     }
 }
 
@@ -147,7 +146,7 @@ void TcpClient::newConnection(int sockfd)
     conn->setMessageCallback(messageCallback_);
     conn->setWriteCompleteCallback(writeCompleteCallback_);
     conn->setCloseCallback(
-            boost::bind(&TcpClient::removeConnection, this, _1)); // FIXME: unsafe
+            std::bind(&TcpClient::removeConnection, this, _1)); // FIXME: unsafe
     {
         MutexLockGuard lock(mutex_);
         connection_ = conn;
@@ -166,7 +165,7 @@ void TcpClient::removeConnection(const TcpConnectionPtr& conn)
         connection_.reset();
     }
 
-    loop_->queueInLoop(boost::bind(&TcpConnection::connectDestroyed, conn));
+    loop_->queueInLoop(std::bind(&TcpConnection::connectDestroyed, conn));
     if (retry_ && connect_)
     {
         LOG_INFO << "TcpClient::connect[" << name_ << "] - Reconnecting to "

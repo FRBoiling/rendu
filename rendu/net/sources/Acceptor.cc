@@ -1,14 +1,12 @@
 //
 // Created by boil on 20-4-17.
 //
+#include "../includes/Acceptor.h"
 
 #include <fcntl.h>
 #include <boost/bind.hpp>
-#include <rendu/log/Logger.h>
-#include "Acceptor.h"
 
 using namespace rendu::net;
-using namespace rendu::log;
 
 Acceptor::Acceptor(EventLoop *loop, const InetAddress &listenAddr, bool reuseport)
         : loop_(loop),

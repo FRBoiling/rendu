@@ -2,23 +2,26 @@
 // Created by boil on 20-4-24.
 //
 
-#ifndef RENDU_EVENTLOOPTHREADPOOL_H
-#define RENDU_EVENTLOOPTHREADPOOL_H
+#ifndef RENDU_NET_EVENTLOOPTHREADPOOL_H
+#define RENDU_NET_EVENTLOOPTHREADPOOL_H
 
 #include "EventLoop.h"
 #include "EventLoopThread.h"
 
-#include <rendu/common/noncopyable.h>
-#include <rendu/common/Types.h>
+#include "rendu/base/rendu_base.h"
+
 #include <boost/function.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 
-namespace rendu {
-    namespace net {
+namespace rendu
+{
+    namespace net
+    {
 
-        class EventLoopThreadPool : noncopyable {
+        class EventLoopThreadPool : Noncopyable
+        {
         public:
-            typedef boost::function<void(EventLoop * )> ThreadInitCallback;
+            typedef boost::function<void(EventLoop *)> ThreadInitCallback;
 
             EventLoopThreadPool(EventLoop *baseLoop, const string &nameArg);
 
@@ -42,16 +45,15 @@ namespace rendu {
             const string &name() const { return name_; }
 
         private:
-
             EventLoop *baseLoop_;
             string name_;
             bool started_;
             int numThreads_;
             int next_;
-            boost::ptr_vector <EventLoopThread> threads_;
+            boost::ptr_vector<EventLoopThread> threads_;
             std::vector<EventLoop *> loops_;
         };
 
-    }
-}
-#endif //RENDU_EVENTLOOPTHREADPOOL_H
+    } // namespace net
+} // namespace rendu
+#endif //RENDU_NET_EVENTLOOPTHREADPOOL_H

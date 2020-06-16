@@ -1,42 +1,39 @@
 //
 // Created by boil on 20-4-17.
 //
-#ifndef RENDU_EVENTLOOP_H
-#define RENDU_EVENTLOOP_H
+#ifndef RENDU_NET_EVENTLOOP_H
+#define RENDU_NET_EVENTLOOP_H
 
 ///
 /// Reactor, at most one per thread.
 ///
 /// This is an interface class, so don't expose too much details.
 
-#include <vector>
-
-#include <boost/function.hpp>
-#include <boost/any.hpp>
-#include <boost/scoped_ptr.hpp>
-
-#include <Noncopyable.h>
-#include <Timestamp.h>
-#include <CurrentThread.h>
-#include <Mutex.h>
-
+#include "rendu/base/rendu_base.h"
 #include "TimerId.h"
 
-namespace rendu {
-    namespace net {
+#include <atomic>
+#include <functional>
+#include <vector>
+#include <boost/any.hpp>
+
+namespace rendu
+{
+    namespace net
+    {
         class Channel;
 
         class Poller;
 
         class TimerQueue;
 
-        class EventLoop : rendu::noncopyable {
+        class EventLoop : Noncopyable
+        {
         public:
-            typedef boost::function<void()> Functor;
+            typedef std::function<void()> Functor;
 
             EventLoop();
-
-            ~EventLoop();  // force out-line dtor, for scoped_ptr members.
+            ~EventLoop(); // force out-line dtor, for std::unique_ptr members.
 
             ///
             /// Loops forever.
@@ -62,22 +59,13 @@ namespace rendu {
             /// It wakes up the loop, and run the cb.
             /// If in the same loop thread, cb is run within the function.
             /// Safe to call from other threads.
-            void runInLoop(const Functor &cb);
-
+            void runInLoop(Functor cb);
             /// Queues callback in the loop thread.
             /// Runs after finish pooling.
             /// Safe to call from other threads.
-            void queueInLoop(const Functor &cb);
+            void queueInLoop(Functor cb);
 
             size_t queueSize() const;
-
-#ifdef __GXX_EXPERIMENTAL_CXX0X__
-
-            void runInLoop(Functor &&cb);
-
-            void queueInLoop(Functor &&cb);
-
-#endif
 
             // timers
 
@@ -85,69 +73,61 @@ namespace rendu {
             /// Runs callback at 'time'.
             /// Safe to call from other threads.
             ///
-            TimerId runAt(const Timestamp &time, const TimerCallback &cb);
-
+            TimerId runAt(Timestamp time, TimerCallback cb);
             ///
             /// Runs callback after @c delay seconds.
             /// Safe to call from other threads.
             ///
-            TimerId runAfter(double delay, const TimerCallback &cb);
-
+            TimerId runAfter(double delay, TimerCallback cb);
             ///
             /// Runs callback every @c interval seconds.
             /// Safe to call from other threads.
             ///
-            TimerId runEvery(double interval, const TimerCallback &cb);
-
+            TimerId runEvery(double interval, TimerCallback cb);
             ///
             /// Cancels the timer.
             /// Safe to call from other threads.
             ///
             void cancel(TimerId timerId);
 
-#ifdef __GXX_EXPERIMENTAL_CXX0X__
-
-            TimerId runAt(const Timestamp &time, TimerCallback &&cb);
-
-            TimerId runAfter(double delay, TimerCallback &&cb);
-
-            TimerId runEvery(double interval, TimerCallback &&cb);
-
-#endif
-
             // internal usage
             void wakeup();
-
             void updateChannel(Channel *channel);
-
             void removeChannel(Channel *channel);
-
             bool hasChannel(Channel *channel);
 
             // pid_t threadId() const { return threadId_; }
-            void assertInLoopThread() {
-                if (!isInLoopThread()) {
+            void assertInLoopThread()
+            {
+                if (!isInLoopThread())
+                {
                     abortNotInLoopThread();
                 }
             }
-
-            bool isInLoopThread() const { return threadId_ == thread::CurrentThread::tid(); }
-
+            bool isInLoopThread() const { return threadId_ == CurrentThread::tid(); }
             // bool callingPendingFunctors() const { return callingPendingFunctors_; }
             bool eventHandling() const { return eventHandling_; }
 
-            void setContext(const boost::any &context) { context_ = context; }
+            void setContext(const boost::any &context)
+            {
+                context_ = context;
+            }
 
-            const boost::any &getContext() const { return context_; }
+            const boost::any &getContext() const
+            {
+                return context_;
+            }
 
-            boost::any *getMutableContext() { return &context_; }
+            boost::any *getMutableContext()
+            {
+                return &context_;
+            }
 
             static EventLoop *getEventLoopOfCurrentThread();
 
         private:
             void abortNotInLoopThread();
-
-            void handleRead();  // waked up
+            void handleRead(); // waked up
             void doPendingFunctors();
 
             void printActiveChannels() const; // DEBUG
@@ -155,28 +135,28 @@ namespace rendu {
             typedef std::vector<Channel *> ChannelList;
 
             bool looping_; /* atomic */
-            bool quit_; /* atomic and shared between threads, okay on x86, I guess. */
-            bool eventHandling_; /* atomic */
+            std::atomic<bool> quit_;
+            bool eventHandling_;          /* atomic */
             bool callingPendingFunctors_; /* atomic */
             int64_t iteration_;
             const pid_t threadId_;
             Timestamp pollReturnTime_;
-            boost::scoped_ptr<Poller> poller_;
-            boost::scoped_ptr<TimerQueue> timerQueue_;
+            std::unique_ptr<Poller> poller_;
+            std::unique_ptr<TimerQueue> timerQueue_;
             int wakeupFd_;
             // unlike in TimerQueue, which is an internal class,
             // we don't expose Channel to client.
-            boost::scoped_ptr<Channel> wakeupChannel_;
+            std::unique_ptr<Channel> wakeupChannel_;
             boost::any context_;
 
             // scratch variables
             ChannelList activeChannels_;
             Channel *currentActiveChannel_;
 
-            mutable thread::MutexLock mutex_;
-            std::vector<Functor> pendingFunctors_; // @GuardedBy mutex_
+            mutable MutexLock mutex_;
+            std::vector<Functor> pendingFunctors_ GUARDED_BY(mutex_);
         };
-    }
-}
+    } // namespace net
+} // namespace rendu
 
-#endif //RENDU_EVENTLOOP_H
+#endif //RENDU_NET_EVENTLOOP_H

@@ -1,5 +1,5 @@
 FILE(GLOB BASE_SOURCES "sources/*.cc") 
-FILE(GLOB BASE_INCLUDES "includes/*.h") 
+FILE(GLOB BASE_INCLUDES "includes/*.h" "*.h") 
 
 # FILE (GLOB BASE_SOURCES "*.cc" "*.c")
 # FILE (GLOB BASE_INCLUDES "*.h" "*.h")

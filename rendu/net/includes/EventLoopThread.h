@@ -2,40 +2,38 @@
 // Created by boil on 20-4-24.
 //
 
-#ifndef RENDU_EVENTLOOPTHREAD_H
-#define RENDU_EVENTLOOPTHREAD_H
+#ifndef RENDU_NET_EVENTLOOPTHREAD_H
+#define RENDU_NET_EVENTLOOPTHREAD_H
 
-#include "EventLoop.h"
+#include "rendu/base/rendu_base.h"
+#include <functional>
 
-#include <rendu/common/noncopyable.h>
-#include <rendu/thread/Thread.h>
-#include <rendu/thread/Condition.h>
-
-namespace rendu{
-    using namespace thread;
-    namespace net{
-        class EventLoopThread : rendu::noncopyable
+namespace rendu
+{
+    namespace net
+    {
+        class EventLoop;
+        class EventLoopThread : Noncopyable
         {
         public:
-            typedef boost::function<void(EventLoop*)> ThreadInitCallback;
+            typedef std::function<void(EventLoop *)> ThreadInitCallback;
 
-            EventLoopThread(const ThreadInitCallback& cb = ThreadInitCallback(),
-                            const string& name = string());
+            EventLoopThread(const ThreadInitCallback &cb = ThreadInitCallback(),
+                            const string &name = string());
             ~EventLoopThread();
-            EventLoop* startLoop();
+            EventLoop *startLoop();
 
         private:
             void threadFunc();
 
-            EventLoop* loop_;
+            EventLoop *loop_ GUARDED_BY(mutex_);
             bool exiting_;
             Thread thread_;
             MutexLock mutex_;
-            Condition cond_;
+            Condition cond_ GUARDED_BY(mutex_);
             ThreadInitCallback callback_;
         };
-    }
-}
+    } // namespace net
+} // namespace rendu
 
-
-#endif //RENDU_EVENTLOOPTHREAD_H
+#endif //RENDU_NET_EVENTLOOPTHREAD_H

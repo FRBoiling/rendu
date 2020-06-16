@@ -2,24 +2,24 @@
 // Created by boil on 20-4-22.
 //
 
-#include <rendu/log/Logger.h>
-#include <boost/bind.hpp>
+#include "../includes/Connector.h"
+#include "../includes/SocketsOps.h"
+#include "../includes/Channel.h"
+#include "../includes/EventLoop.h"
 
-#include "Connector.h"
-#include "SocketsOps.h"
+#include "rendu/base/rendu_base.h"
 
 using namespace rendu;
 using namespace rendu::net;
-using namespace rendu::log;
 
 const int Connector::kMaxRetryDelayMs;
 
-Connector::Connector(EventLoop* loop, const InetAddress& serverAddr)
-        : loop_(loop),
-          serverAddr_(serverAddr),
-          connect_(false),
-          state_(kDisconnected),
-          retryDelayMs_(kInitRetryDelayMs)
+Connector::Connector(EventLoop *loop, const InetAddress &serverAddr)
+    : loop_(loop),
+      serverAddr_(serverAddr),
+      connect_(false),
+      state_(kDisconnected),
+      retryDelayMs_(kInitRetryDelayMs)
 {
     LOG_DEBUG << "ctor[" << this << "]";
 }
@@ -33,7 +33,7 @@ Connector::~Connector()
 void Connector::start()
 {
     connect_ = true;
-    loop_->runInLoop(boost::bind(&Connector::startInLoop, this)); // FIXME: unsafe
+    loop_->runInLoop(std::bind(&Connector::startInLoop, this)); // FIXME: unsafe
 }
 
 void Connector::startInLoop()
@@ -53,7 +53,7 @@ void Connector::startInLoop()
 void Connector::stop()
 {
     connect_ = false;
-    loop_->queueInLoop(boost::bind(&Connector::stopInLoop, this)); // FIXME: unsafe
+    loop_->queueInLoop(std::bind(&Connector::stopInLoop, this)); // FIXME: unsafe
     // FIXME: cancel timer
 }
 
@@ -75,37 +75,37 @@ void Connector::connect()
     int savedErrno = (ret == 0) ? 0 : errno;
     switch (savedErrno)
     {
-        case 0:
-        case EINPROGRESS:
-        case EINTR:
-        case EISCONN:
-            connecting(sockfd);
-            break;
+    case 0:
+    case EINPROGRESS:
+    case EINTR:
+    case EISCONN:
+        connecting(sockfd);
+        break;
 
-        case EAGAIN:
-        case EADDRINUSE:
-        case EADDRNOTAVAIL:
-        case ECONNREFUSED:
-        case ENETUNREACH:
-            retry(sockfd);
-            break;
+    case EAGAIN:
+    case EADDRINUSE:
+    case EADDRNOTAVAIL:
+    case ECONNREFUSED:
+    case ENETUNREACH:
+        retry(sockfd);
+        break;
 
-        case EACCES:
-        case EPERM:
-        case EAFNOSUPPORT:
-        case EALREADY:
-        case EBADF:
-        case EFAULT:
-        case ENOTSOCK:
-            LOG_SYSERR << "connect error in Connector::startInLoop " << savedErrno;
-            sockets::close(sockfd);
-            break;
+    case EACCES:
+    case EPERM:
+    case EAFNOSUPPORT:
+    case EALREADY:
+    case EBADF:
+    case EFAULT:
+    case ENOTSOCK:
+        LOG_SYSERR << "connect error in Connector::startInLoop " << savedErrno;
+        sockets::close(sockfd);
+        break;
 
-        default:
-            LOG_SYSERR << "Unexpected error in Connector::startInLoop " << savedErrno;
-            sockets::close(sockfd);
-            // connectErrorCallback_();
-            break;
+    default:
+        LOG_SYSERR << "Unexpected error in Connector::startInLoop " << savedErrno;
+        sockets::close(sockfd);
+        // connectErrorCallback_();
+        break;
     }
 }
 
@@ -124,9 +124,9 @@ void Connector::connecting(int sockfd)
     assert(!channel_);
     channel_.reset(new Channel(loop_, sockfd));
     channel_->setWriteCallback(
-            boost::bind(&Connector::handleWrite, this)); // FIXME: unsafe
+        std::bind(&Connector::handleWrite, this)); // FIXME: unsafe
     channel_->setErrorCallback(
-            boost::bind(&Connector::handleError, this)); // FIXME: unsafe
+        std::bind(&Connector::handleError, this)); // FIXME: unsafe
 
     // channel_->tie(shared_from_this()); is not working,
     // as channel_ is not managed by shared_ptr
@@ -139,7 +139,7 @@ int Connector::removeAndResetChannel()
     channel_->remove();
     int sockfd = channel_->fd();
     // Can't reset channel_ here, because we are inside Channel::handleEvent
-    loop_->queueInLoop(boost::bind(&Connector::resetChannel, this)); // FIXME: unsafe
+    loop_->queueInLoop(std::bind(&Connector::resetChannel, this)); // FIXME: unsafe
     return sockfd;
 }
 
@@ -207,8 +207,8 @@ void Connector::retry(int sockfd)
     {
         LOG_INFO << "Connector::retry - Retry connecting to " << serverAddr_.toIpPort()
                  << " in " << retryDelayMs_ << " milliseconds. ";
-        loop_->runAfter(retryDelayMs_/1000.0,
-                        boost::bind(&Connector::startInLoop, shared_from_this()));
+        loop_->runAfter(retryDelayMs_ / 1000.0,
+                        std::bind(&Connector::startInLoop, shared_from_this()));
         retryDelayMs_ = std::min(retryDelayMs_ * 2, kMaxRetryDelayMs);
     }
     else

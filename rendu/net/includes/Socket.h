@@ -2,23 +2,26 @@
 // Created by boil on 20-4-22.
 //
 
-#ifndef RENDU_SOCKET_H
-#define RENDU_SOCKET_H
+#ifndef RENDU_NET_SOCKET_H
+#define RENDU_NET_SOCKET_H
 
-#include <rendu/common/noncopyable.h>
+#include "rendu/base/rendu_base.h"
 #include "InetAddress.h"
 
-namespace rendu {
-    namespace net {
-///
-/// Wrapper of socket file descriptor.
-///
-/// It closes the sockfd when desctructs.
-/// It's thread safe, all operations are delegated to OS.
-        class Socket : rendu::noncopyable {
+namespace rendu
+{
+    namespace net
+    {
+        ///
+        /// Wrapper of socket file descriptor.
+        ///
+        /// It closes the sockfd when desctructs.
+        /// It's thread safe, all operations are delegated to OS.
+        class Socket : Noncopyable
+        {
         public:
             explicit Socket(int sockfd)
-                    : sockfd_(sockfd) {}
+                : sockfd_(sockfd) {}
 
             // Socket(Socket&&) // move constructor in C++11
             ~Socket();
@@ -68,8 +71,7 @@ namespace rendu {
             const int sockfd_;
         };
 
+    } // namespace net
+} // namespace rendu
 
-    }
-}
-
-#endif //RENDU_SOCKET_H
+#endif //RENDU_NET_SOCKET_H

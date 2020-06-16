@@ -1,33 +1,30 @@
 //
 // Created by boil on 20-4-23.
 //
-#include "TcpServer.h"
-#include "Acceptor.h"
-#include "EventLoop.h"
-#include "EventLoopThreadPool.h"
-#include "SocketsOps.h"
-
-#include <rendu/log/Logger.h>
-#include <boost/bind.hpp>
+#include "../includes/TcpServer.h"
+#include "../includes/Acceptor.h"
+#include "../includes/EventLoop.h"
+#include "../includes/EventLoopThreadPool.h"
+#include "../includes/SocketsOps.h"
+#include "rendu/base/rendu_base.h"
 
 using namespace rendu::net;
-using namespace rendu::log;
 
-TcpServer::TcpServer(EventLoop* loop,
-                     const InetAddress& listenAddr,
-                     const string& nameArg,
+TcpServer::TcpServer(EventLoop *loop,
+                     const InetAddress &listenAddr,
+                     const string &nameArg,
                      Option option)
-        : loop_(CHECK_NOTNULL(loop)),
-          ipPort_(listenAddr.toIpPort()),
-          name_(nameArg),
-          acceptor_(new Acceptor(loop, listenAddr, option == kReusePort)),
-          threadPool_(new EventLoopThreadPool(loop, name_)),
-          connectionCallback_(defaultConnectionCallback),
-          messageCallback_(defaultMessageCallback),
-          nextConnId_(1)
+    : loop_(CHECK_NOTNULL(loop)),
+      ipPort_(listenAddr.toIpPort()),
+      name_(nameArg),
+      acceptor_(new Acceptor(loop, listenAddr, option == kReusePort)),
+      threadPool_(new EventLoopThreadPool(loop, name_)),
+      connectionCallback_(defaultConnectionCallback),
+      messageCallback_(defaultMessageCallback),
+      nextConnId_(1)
 {
     acceptor_->setNewConnectionCallback(
-            boost::bind(&TcpServer::newConnection, this, _1, _2));
+        std::bind(&TcpServer::newConnection, this, _1, _2));
 }
 
 TcpServer::~TcpServer()
@@ -41,7 +38,7 @@ TcpServer::~TcpServer()
         TcpConnectionPtr conn(it->second);
         it->second.reset();
         conn->getLoop()->runInLoop(
-                boost::bind(&TcpConnection::connectDestroyed, conn));
+            std::bind(&TcpConnection::connectDestroyed, conn));
     }
 }
 
@@ -59,14 +56,14 @@ void TcpServer::start()
 
         assert(!acceptor_->listenning());
         loop_->runInLoop(
-                boost::bind(&Acceptor::listen, get_pointer(acceptor_)));
+            std::bind(&Acceptor::listen, get_pointer(acceptor_)));
     }
 }
 
-void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr)
+void TcpServer::newConnection(int sockfd, const InetAddress &peerAddr)
 {
     loop_->assertInLoopThread();
-    EventLoop* ioLoop = threadPool_->getNextLoop();
+    EventLoop *ioLoop = threadPool_->getNextLoop();
     char buf[64];
     snprintf(buf, sizeof buf, "-%s#%d", ipPort_.c_str(), nextConnId_);
     ++nextConnId_;
@@ -88,17 +85,17 @@ void TcpServer::newConnection(int sockfd, const InetAddress& peerAddr)
     conn->setMessageCallback(messageCallback_);
     conn->setWriteCompleteCallback(writeCompleteCallback_);
     conn->setCloseCallback(
-            boost::bind(&TcpServer::removeConnection, this, _1)); // FIXME: unsafe
-    ioLoop->runInLoop(boost::bind(&TcpConnection::connectEstablished, conn));
+        std::bind(&TcpServer::removeConnection, this, _1)); // FIXME: unsafe
+    ioLoop->runInLoop(std::bind(&TcpConnection::connectEstablished, conn));
 }
 
-void TcpServer::removeConnection(const TcpConnectionPtr& conn)
+void TcpServer::removeConnection(const TcpConnectionPtr &conn)
 {
     // FIXME: unsafe
-    loop_->runInLoop(boost::bind(&TcpServer::removeConnectionInLoop, this, conn));
+    loop_->runInLoop(std::bind(&TcpServer::removeConnectionInLoop, this, conn));
 }
 
-void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn)
+void TcpServer::removeConnectionInLoop(const TcpConnectionPtr &conn)
 {
     loop_->assertInLoopThread();
     LOG_INFO << "TcpServer::removeConnectionInLoop [" << name_
@@ -106,7 +103,7 @@ void TcpServer::removeConnectionInLoop(const TcpConnectionPtr& conn)
     size_t n = connections_.erase(conn->name());
     (void)n;
     assert(n == 1);
-    EventLoop* ioLoop = conn->getLoop();
+    EventLoop *ioLoop = conn->getLoop();
     ioLoop->queueInLoop(
-            boost::bind(&TcpConnection::connectDestroyed, conn));
+        std::bind(&TcpConnection::connectDestroyed, conn));
 }
