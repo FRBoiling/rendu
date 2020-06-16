@@ -125,3 +125,10 @@ build/rendu/net/CMakeFiles/rendu_net.dir/sources/Connector.cc.o
 build/rendu/net/CMakeFiles/rendu_net.dir/sources/TcpClient.cc.o
 build/rendu/net/CMakeFiles/rendu_net.dir/sources/TcpConnection.cc.o
 build/rendu/net/CMakeFiles/rendu_net.dir/sources/TimerQueue.cc.o
+build/.cmake/api/v1/reply/codemodel-v2-e3516e517019a54c3f11.json
+build/.cmake/api/v1/reply/index-2020-06-16T09-40-46-0332.json
+build/.cmake/api/v1/reply/target-rendu_net-Debug-f6aa9da416f151aba98e.json
+lib/librendu_base.a
+lib/librendu_net.a
+lib/librendu_base.a
+lib/librendu_net.a
