@@ -35,13 +35,15 @@ namespace rendu
         T get()
         {
             // in gcc >= 4.7: __atomic_load_n(&value_, __ATOMIC_SEQ_CST)
-            return __sync_val_compare_and_swap(&value_, 0, 0);
+            // return __sync_val_compare_and_swap(&value_, 0, 0);
+            return __atomic_load_n(&value_, __ATOMIC_SEQ_CST);
         }
 
         T getAndAdd(T x)
         {
             // in gcc >= 4.7: __atomic_fetch_add(&value_, x, __ATOMIC_SEQ_CST)
-            return __sync_fetch_and_add(&value_, x);
+            // return __sync_fetch_and_add(&value_, x);
+            return __atomic_fetch_add(&value_, x, __ATOMIC_SEQ_CST);
         }
 
         T addAndGet(T x)
@@ -77,7 +79,8 @@ namespace rendu
         T getAndSet(T newValue)
         {
             // in gcc >= 4.7: __atomic_exchange_n(&value_, newValue, __ATOMIC_SEQ_CST)
-            return __sync_lock_test_and_set(&value_, newValue);
+            //return __sync_lock_test_and_set(&value_, newValue);
+            return __atomic_exchange_n(&value_, newValue, __ATOMIC_SEQ_CST);
         }
 
     private:
@@ -87,40 +90,41 @@ namespace rendu
     typedef AtomicIntegerT<int32_t> AtomicInt32;
     typedef AtomicIntegerT<int64_t> AtomicInt64;
 
-    template <typename T>
-    class AtomicBooleanT : Noncopyable
+    class AtomicBoolean : Noncopyable
     {
     public:
-        AtomicBooleanT()
+        AtomicBoolean()
             : value_(false)
         {
         }
 
         // uncomment if you need copying and assignment
         //
-        // AtomicBooleanT(const AtomicBooleanT& that)
+        // AtomicBoolean(const AtomicBoolean& that)
         //   : value_(that.get())
         // {}
-        //
-        AtomicBooleanT& operator=(const AtomicBooleanT& that)
+        // //
+        // AtomicBoolean& operator=(const AtomicBoolean& that)
+        // {
+        //   getAndSet(that.get());
+        //   return *this;
+        // }
+
+        bool get()
         {
-          getAndSet(that.get());
-          return *this;
+            //return __sync_bool_compare_and_swap(&value_, false, false);
+            return __atomic_load_n(&value_, __ATOMIC_SEQ_CST);
         }
 
-        T get()
-        {
-            return __sync_bool_compare_and_swap(&value_, false, false);
-        }
-
-        T getAndSet(T newValue)
+        bool getAndSet(bool newValue)
         {
             // in gcc >= 4.7: __atomic_exchange_n(&value_, newValue, __ATOMIC_SEQ_CST)
-            return __sync_lock_test_and_set(&value_, newValue);
+            // return __sync_lock_test_and_set(&value_, newValue);
+            return __atomic_exchange_n(&value_, newValue, __ATOMIC_SEQ_CST);
         }
 
     private:
-        volatile T value_;
+        volatile bool value_;
     };
 
 } // namespace rendu

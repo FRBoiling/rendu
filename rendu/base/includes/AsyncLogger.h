@@ -54,7 +54,7 @@ namespace rendu
         typedef BufferVector::value_type BufferPtr;
 
         const int flushInterval_;
-        AtomicBooleanT<bool> running_;
+        AtomicBoolean running_;
         const string basename_;
         const off_t rollSize_;
         rendu::Thread thread_;
