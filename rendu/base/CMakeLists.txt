@@ -14,6 +14,7 @@ aux_source_directory(. DIR_BASE)
 
 # 生成链接库
 add_library (rendu_base ${DIR_BASE})
+target_link_libraries(rendu_base pthread)
 # target_link_libraries(rendu_base rendu_zmalloc)
 
 # install(FILES ${BASE_INCLUDES} DESTINATION include/rendu/base)

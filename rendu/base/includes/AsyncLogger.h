@@ -34,7 +34,7 @@ namespace rendu
 
         void start()
         {
-            running_ .getAndSet(false);
+            running_ .getAndSet(true);
             thread_.start();
             latch_.wait();
         }
