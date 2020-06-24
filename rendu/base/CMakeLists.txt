@@ -19,4 +19,6 @@ target_link_libraries(rendu_base pthread)
 
 # install(FILES ${BASE_INCLUDES} DESTINATION include/rendu/base)
 
-add_subdirectory(tests)
+    enable_testing()
+    add_subdirectory(tests)
+
