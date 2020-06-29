@@ -46,6 +46,7 @@ namespace rendu
             thread_.join();
         }
 
+        void setlogout(bool writFile);
     private:
         void threadFunc();
 
