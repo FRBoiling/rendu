@@ -12,7 +12,8 @@
             "intelliSenseMode": "${default}",
             "browse": {
                 "limitSymbolsToIncludedHeaders": true
-            }
+            },
+            "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],
     "version": 4

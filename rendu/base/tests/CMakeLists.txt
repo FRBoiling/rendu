@@ -20,3 +20,6 @@ add_executable(logstream_test LogStream_test.cc)
 target_link_libraries(logstream_test rendu_base boost_unit_test_framework)
 add_test(NAME logstream_test COMMAND logstream_test)
 endif()
+
+add_executable(ProcessInfo_test ProcessInfo_test.cc)
+target_link_libraries(ProcessInfo_test rendu_base)

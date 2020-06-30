@@ -191,9 +191,9 @@ BOOST_AUTO_TEST_CASE(testLogStreamStrings)
   os << "Hello ";
   BOOST_CHECK_EQUAL(buf.toString(), string("Hello "));
 
-  string chenshuo = "Shuo Chen";
-  os << chenshuo;
-  BOOST_CHECK_EQUAL(buf.toString(), string("Hello Shuo Chen"));
+  string boil = "boil";
+  os << boil;
+  BOOST_CHECK_EQUAL(buf.toString(), string("Hello boil"));
 }
 
 BOOST_AUTO_TEST_CASE(testLogStreamFmts)
