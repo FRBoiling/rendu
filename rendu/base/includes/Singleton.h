@@ -1,39 +1,39 @@
+// Use of this source code is governed by a BSD-style license
+// that can be found in the License file.
 //
-// Created by boil on 18-10-7.
-//
+// Author: Shuo Chen (chenshuo at chenshuo dot com)
 
 #ifndef RENDU_SINGLETON_H
 #define RENDU_SINGLETON_H
 
-#include "Noncopyable.h"
+#include "../includes/Noncopyable.h"
+
+#include <assert.h>
 #include <pthread.h>
+#include <stdlib.h> // atexit
 
 namespace rendu
 {
 
+    // This doesn't detect inherited member functions!
+    // http://stackoverflow.com/questions/1966362/sfinae-to-check-for-inherited-member-functions
     template <typename T>
     struct has_no_destroy
     {
-#ifdef __GXX_EXPERIMENTAL_CXX0X__
-
         template <typename C>
         static char test(decltype(&C::no_destroy));
-
-#else
-        template <typename C>
-        static char test(typeof(&C::no_destroy));
-#endif
-
         template <typename C>
         static int32_t test(...);
-
         const static bool value = sizeof(test<T>(0)) == 1;
     };
 
     template <typename T>
-    class Singleton : rendu::noncopyable
+    class Singleton : Noncopyable
     {
     public:
+        Singleton() = delete;
+        ~Singleton() = delete;
+
         static T &instance()
         {
             pthread_once(&ponce_, &Singleton::init);
@@ -42,10 +42,6 @@ namespace rendu
         }
 
     private:
-        Singleton();
-
-        ~Singleton();
-
         static void init()
         {
             value_ = new T();
@@ -78,4 +74,4 @@ namespace rendu
 
 } // namespace rendu
 
-#endif //RENDU_SINGLETON_H
+#endif // RENDU_SINGLETON_H
