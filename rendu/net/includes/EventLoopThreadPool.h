@@ -10,8 +10,9 @@
 
 #include "rendu/base/rendu_base.h"
 
-#include <boost/function.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
+#include <functional>
+#include <vector>
+#include <stdio.h>
 
 namespace rendu
 {
@@ -21,7 +22,7 @@ namespace rendu
         class EventLoopThreadPool : Noncopyable
         {
         public:
-            typedef boost::function<void(EventLoop *)> ThreadInitCallback;
+            typedef std::function<void(EventLoop *)> ThreadInitCallback;
 
             EventLoopThreadPool(EventLoop *baseLoop, const string &nameArg);
 
@@ -50,7 +51,7 @@ namespace rendu
             bool started_;
             int numThreads_;
             int next_;
-            boost::ptr_vector<EventLoopThread> threads_;
+            std::vector<std::unique_ptr<EventLoopThread>> threads_;
             std::vector<EventLoop *> loops_;
         };
 

@@ -130,6 +130,7 @@ include_directories(${PROJECT_SOURCE_DIR})
 
 add_subdirectory(rendu/base)
 add_subdirectory(rendu/net)
+add_subdirectory(test)
 
 #if (NOT CMAKE_BUILD_NO_EXAMPLES)
     #    add_subdirectory(rendu/tests)

@@ -5,8 +5,8 @@
 #ifndef RENDU_NET_ACCEPTOR_H
 #define RENDU_NET_ACCEPTOR_H
 
-#include <boost/function.hpp>
 #include "rendu/base/rendu_base.h"
+#include <functional>
 #include "SocketsOps.h"
 #include "InetAddress.h"
 #include "EventLoop.h"
@@ -23,7 +23,7 @@ namespace rendu
         class Acceptor : Noncopyable
         {
         public:
-            typedef boost::function<void(int sockfd,
+            typedef std::function<void(int sockfd,
                                          const InetAddress &)>
                 NewConnectionCallback;
 
