@@ -3,7 +3,7 @@
 #include "../includes/EventLoopThread.h"
 #include "../includes/TcpClient.h"
 
-#include "../base/includes/Logger.h"
+#include "rendu/base/includes/Logger.h"
 
 using namespace rendu;
 using namespace rendu::net;

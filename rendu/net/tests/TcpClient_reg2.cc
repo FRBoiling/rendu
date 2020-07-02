@@ -1,10 +1,10 @@
 // TcpClient destructs when TcpConnection is connected but unique.
 
-#include "../includes/Logger.h"
+#include "rendu/base/includes/Logger.h"
 #include "../includes/EventLoop.h"
 #include "../includes/TcpClient.h"
 
-#include "../base/includes/Thread.h"
+#include "rendu/base/includes/Thread.h"
 
 using namespace rendu;
 using namespace rendu::net;

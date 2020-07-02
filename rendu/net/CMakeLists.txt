@@ -43,6 +43,8 @@ aux_source_directory(. DIR_NET)
 add_library (rendu_net ${DIR_NET})
 target_link_libraries(rendu_net rendu_base)
 # install(TARGETS rendu_net DESTINATION lib)
+enable_testing()
+add_subdirectory(tests)
 
 #set(HEADERS
 #        Buffer.h

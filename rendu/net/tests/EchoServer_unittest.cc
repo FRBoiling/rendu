@@ -2,8 +2,8 @@
 #include "../includes/InetAddress.h"
 #include "../includes/EventLoop.h"
 
-#include "../base/includes/Logger.h"
-#include "../base/includes/Thread.h"
+#include "rendu/base/includes/Logger.h"
+#include "rendu/base/includes/Thread.h"
 
 #include <utility>
 

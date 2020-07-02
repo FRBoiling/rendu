@@ -1,5 +1,5 @@
 #include "../includes/EventLoop.h"
-#include "../base/includes/Thread.h"
+#include "rendu/base/includes/Thread.h"
 
 #include <assert.h>
 #include <stdio.h>

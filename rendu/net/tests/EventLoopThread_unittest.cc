@@ -1,7 +1,7 @@
 #include "../includes/EventLoopThread.h"
 #include "../includes/EventLoop.h"
-#include "../base/includes/Thread.h"
-#include "../base/includes/CountDownLatch.h"
+#include "rendu/base/includes/Thread.h"
+#include "rendu/base/includes/CountDownLatch.h"
 
 #include <stdio.h>
 #include <unistd.h>

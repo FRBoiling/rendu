@@ -1,6 +1,6 @@
 #include "../includes/EventLoopThreadPool.h"
 #include "../includes/EventLoop.h"
-#include "../base/includes/Thread.h"
+#include "rendu/base/includes/Thread.h"
 
 #include <stdio.h>
 #include <unistd.h>
