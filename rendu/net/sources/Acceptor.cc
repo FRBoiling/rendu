@@ -4,7 +4,6 @@
 #include "../includes/Acceptor.h"
 
 #include <fcntl.h>
-#include <boost/bind.hpp>
 
 using namespace rendu::net;
 
@@ -19,7 +18,7 @@ Acceptor::Acceptor(EventLoop *loop, const InetAddress &listenAddr, bool reusepor
     acceptSocket_.setReusePort(reuseport);
     acceptSocket_.bindAddress(listenAddr);
     acceptChannel_.setReadCallback(
-            boost::bind(&Acceptor::handleRead, this));
+            std::bind(&Acceptor::handleRead, this));
 }
 
 Acceptor::~Acceptor() {

@@ -10,8 +10,6 @@
 
 #include "rendu/base/rendu_base.h"
 
-#include <boost/bind.hpp>
-
 #include <signal.h>
 #include <sys/eventfd.h>
 
